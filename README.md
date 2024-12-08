@@ -31,8 +31,8 @@ Before flashing the firmware, set the option byte `AFR0` in the ST Visual Progra
 ### Microcontroller Pin Assignment
 | Pin  | Signal                          | Description                                                        |
 |------|---------------------------------|--------------------------------------------------------------------|
-| 1    | PD4 (HS) UART1_CK/TIM2_CH1/BEEP | Input: SW UP with 10k pull-up resistor. Grounded when pressed.     |
-| 2    | PD5 (HS) UART1_TX/AIN5          | Input: SW DOWN with 10k pull-up resistor. Grounded when pressed.   |
+| 1    | PD4 (HS) UART1_CK/TIM2_CH1/BEEP | Input: Button UP with 10k pull-up resistor. Grounded when pressed.     |
+| 2    | PD5 (HS) UART1_TX/AIN5          | Input: Button DOWN with 10k pull-up resistor. Grounded when pressed.   |
 | 3    | PD6 (HS) UART1_RX               | Output: Drives colon neons (DS1 & DS2) through 1k resistor.       |
 | 4    | NRST                            | Debug connector pin 3.                                             |
 | 5    | PA1 OSCIN                       | Clock input.                                                       |
