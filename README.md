@@ -7,7 +7,10 @@ Alternate firmware for the GeekStyles IN12 V3 Nixie clock PCB.
 - **1.00**: Initial release.
 
 ## Description
-This firmware is designed for the IN12 V3 clock board, utilizing the STM8S003F3 microcontroller. It supports the frontside board **NixieClock IN12 V3** and the backside board **JM NixieClock IN12 V4.2 20190514**. The microcontroller features 8 KB of Flash memory, 1 KB of RAM, and 128 bytes of EEPROM.
+This firmware is designed for the IN12 V3 clock board, utilizing the STM8S003F3 microcontroller. 
+It supports the frontside board **NixieClock IN12 V3** 
+and the backside board **JM NixieClock IN12 V4.2 20190514**. 
+The microcontroller features 8 KB of Flash memory, 1 KB of RAM, and 128 bytes of EEPROM.
 
 ---
 
@@ -137,7 +140,7 @@ Q7 -> 2003A U14 I5, O5-> N1 9
 
 ---
 
-### control by buttons
+### Control by buttons
 1.
 2.
 3.
