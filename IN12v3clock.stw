@@ -1,0 +1,12 @@
+;	STMicroelectronics Workspace file
+
+[Version]
+Keyword=ST7Workspace-V0.7
+
+[Project0]
+Filename=in12v3clock.stp
+Dependencies=
+[Options]
+ActiveProject=in12v3clock
+ActiveConfig=Release
+AddSortedElements=0
