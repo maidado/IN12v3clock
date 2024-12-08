@@ -134,7 +134,7 @@ Q7 -> 2003A U14 I5, O5-> N1 9
    ```bash
    git clone --recurse-submodules <repository_url>
    ```
-2. Compile the firmware using Cosmic STM8 v4.6 toolchain.
+2. Compile the firmware using Cosmic STM8 v4.6 toolchain. Or use compilled firmware file Release\in12v3clock.s19
 3. Flash the firmware to the STM8S003F3 microcontroller.
 4. Verify the board's functionality.
 
