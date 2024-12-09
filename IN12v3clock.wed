@@ -611,7 +611,7 @@ Docking=True
 MRUDockID=59419
 MRUDockLeftPos=799
 MRUDockTopPos=58
-MRUDockRightPos=893
+MRUDockRightPos=916
 MRUDockBottomPos=88
 MRUFloatStyle=8196
 MRUFloatXPos=-1
@@ -626,7 +626,7 @@ LastAlignedDocking=0
 PctWidth=158405
 MRUFloatCX=94
 MRUFloatCY=30
-MRUHorzDockCX=94
+MRUHorzDockCX=117
 MRUHorzDockCY=30
 MRUVertDockCX=31
 MRUVertDockCY=88
@@ -640,7 +640,7 @@ ptn_Child1=ToolBarInfoEx
 
 [WorkState_v1_2.DockState.Bar-15.ToolBarInfoEx]
 Title=Tools
-Buttons=AHHBAAAAAABHHBAAAAAAAAAAAAAAAAPFPBAAAAAA
+Buttons=AHHBAAAAAABHHBAAAAAAAAAAAAAAAAPFPBAAAAAAECIKAAAAAA
 
 [WorkState_v1_2.DockState.Bar-16]
 BarID=59402
@@ -1244,7 +1244,7 @@ ptn_Child2=ChildFrames
 
 [WorkState_v1_2.Frames.MainFrame]
 WindowPlacement=MCAAAAAACAAAAAAADAAAAAAAAADIPPPPAADIPPPPPPPPPPPPPPPPPPPPKAAAAAAAGAAAAAAADDEAAAAAABEAAAAA
-Title=ST Visual Develop - IN12v3clock.stw - [display.h]
+Title=ST Visual Develop - IN12v3clock.stw - [keyevents.c *]
 
 [WorkState_v1_2.Frames.ChildFrames]
 ptn_Child1=Document-0
@@ -1285,8 +1285,8 @@ ptn_Child1=ViewFrame-0
 DocPathName=keyevents.c
 DocumentString=
 DocTemplateIndex=0
-WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPMPPPPPPPFOPPPPPPMJAAAAAAMJAAAAAAOOFAAAAAJKCAAAAA
-IsActiveChildFrame=False
+WindowPlacement=MCAAAAAACAAAAAAADAAAAAAAPPPPPPPPPPPPPPPPMPPPPPPPFOPPPPPPMJAAAAAAMJAAAAAAOOFAAAAAJKCAAAAA
+IsActiveChildFrame=True
 IsFrameVisible=True
 
 [WorkState_v1_2.Frames.ChildFrames.Document-3]
@@ -1340,6 +1340,6 @@ ptn_Child1=ViewFrame-0
 DocPathName=display.h
 DocumentString=
 DocTemplateIndex=0
-WindowPlacement=MCAAAAAACAAAAAAADAAAAAAAPPPPPPPPPPPPPPPPMPPPPPPPFOPPPPPPANAAAAAAANAAAAAACCGAAAAANNCAAAAA
-IsActiveChildFrame=True
+WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPMPPPPPPPFOPPPPPPANAAAAAAANAAAAAACCGAAAAANNCAAAAA
+IsActiveChildFrame=False
 IsFrameVisible=True

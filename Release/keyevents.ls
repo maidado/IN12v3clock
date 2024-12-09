@@ -63,7 +63,7 @@
   78  004a a502          	bcp	a,#2
   79  004c 2707          	jreq	L3
   80                     ; 72 				fastReleaseKey2();
-  81  004e cd03dc        	call	_fastReleaseKey2
+  81  004e cd03e1        	call	_fastReleaseKey2
   83                     ; 73 				bitmaskclr(ki.bf,S2_M);
   84  0051 72130001      	bres	_ki+1,#1
   85  0055               L3:
@@ -153,11 +153,11 @@
  173  00bd 35ff0007      	mov	_i+7,#255
  174  00c1               L34:
  175                     ; 100 	longpress_key1();
- 176  00c1 cd0314        	call	_longpress_key1
+ 176  00c1 cd0319        	call	_longpress_key1
  178                     ; 101 	longpress_key2();
- 179  00c4 cd036d        	call	_longpress_key2
+ 179  00c4 cd0372        	call	_longpress_key2
  181                     ; 102 	longpress_key1_2();
- 182  00c7 cd03b5        	call	_longpress_key1_2
+ 182  00c7 cd03ba        	call	_longpress_key1_2
  184                     ; 103 }
  185  00ca 5b03          	addw	sp,#3
  186  00cc 81            	ret
@@ -371,12 +371,12 @@
  395  0024 024e          	dc.w	L161
  396  0026 0269          	dc.w	L361
  397  0028 0283          	dc.w	L561
- 398  002a 0297          	dc.w	L761
- 399  002c 02ab          	dc.w	L171
- 400  002e 02bf          	dc.w	L371
- 401  0030 02d3          	dc.w	L571
- 402  0032 02e7          	dc.w	L771
- 403  0034 02fb          	dc.w	L102
+ 398  002a 0298          	dc.w	L761
+ 399  002c 02ac          	dc.w	L171
+ 400  002e 02c0          	dc.w	L371
+ 401  0030 02d4          	dc.w	L571
+ 402  0032 02e8          	dc.w	L771
+ 403  0034 02fc          	dc.w	L102
  404  0036 01d9          	dc.w	L741
  405  0038 01f1          	dc.w	L151
  406  003a 0209          	dc.w	L351
@@ -392,7 +392,7 @@
  416  01a5 0f01          	clr	(OFST+0,sp)
  417                     ; 195 	switch (i.display_state){
  418  01a7 b607          	ld	a,_i+7
- 420                     ; 304 			break;
+ 420                     ; 305 			break;
  421  01a9 a110          	cp	a,#16
  422  01ab 2407          	jruge	L03
  423  01ad 5f            	clrw	x
@@ -401,13 +401,13 @@
  426  01b0 de0020        	ldw	x,(L23,x)
  427  01b3 fc            	jp	(x)
  428  01b4               L03:
- 429  01b4 ac0e030e      	jpf	L302
+ 429  01b4 ac130313      	jpf	L302
  430  01b8               L341:
  431                     ; 196 		case SETUP_HOURS:
  431                     ; 197 			i.display_state = SETUP_MINUTES;
  432  01b8 350f0007      	mov	_i+7,#15
  433                     ; 198 			break;
- 434  01bc ac120312      	jpf	L702
+ 434  01bc ac170317      	jpf	L702
  435  01c0               L541:
  436                     ; 200 		case SETUP_MINUTES:
  436                     ; 201 			ds3231_write_time(&seconds,&i.minutesSetupValue,&i.hoursSetupValue);
@@ -422,7 +422,7 @@
  446                     ; 202 			i.display_state = SETUP_NO;
  447  01d1 35ff0007      	mov	_i+7,#255
  448                     ; 203 			break;
- 449  01d5 ac120312      	jpf	L702
+ 449  01d5 ac170317      	jpf	L702
  450  01d9               L741:
  451                     ; 205 		case SETUP_R:
  451                     ; 206 			i.display_state++;
@@ -437,7 +437,7 @@
  461  01e8 cd0000        	call	_EEPROM_readByte
  463  01eb b70b          	ld	_i+11,a
  464                     ; 209 			break;
- 465  01ed ac120312      	jpf	L702
+ 465  01ed ac170317      	jpf	L702
  466  01f1               L151:
  467                     ; 211 		case SETUP_G:
  467                     ; 212 			i.display_state++;
@@ -452,7 +452,7 @@
  477  0200 cd0000        	call	_EEPROM_readByte
  479  0203 b70b          	ld	_i+11,a
  480                     ; 215 			break;
- 481  0205 ac120312      	jpf	L702
+ 481  0205 ac170317      	jpf	L702
  482  0209               L351:
  483                     ; 217 		case SETUP_B:
  483                     ; 218 			i.display_state = SETUP_NO;
@@ -465,7 +465,7 @@
  491                     ; 220 			bitmaskclr(ki.bf,S2_M);	//disable fast release key2
  492  0217 72130001      	bres	_ki+1,#1
  493                     ; 221 			break;
- 494  021b ac120312      	jpf	L702
+ 494  021b ac170317      	jpf	L702
  495  021f               L551:
  496                     ; 223 		case SETUP_ZERO:
  496                     ; 224 			e.zeroEn = i.setupValue;
@@ -480,7 +480,7 @@
  506                     ; 227 			i.setupValue = e.f1224;
  507  022c 45010b        	mov	_i+11,_e+1
  508                     ; 228 			break;
- 509  022f ac120312      	jpf	L702
+ 509  022f ac170317      	jpf	L702
  510  0233               L751:
  511                     ; 230 		case SETUP_F1224:
  511                     ; 231 			e.f1224 = i.setupValue;
@@ -498,7 +498,7 @@
  524  0245 b60b          	ld	a,_i+11
  525  0247 cd0000        	call	_displaySetBright
  527                     ; 236 			break;
- 528  024a ac120312      	jpf	L702
+ 528  024a ac170317      	jpf	L702
  529  024e               L161:
  530                     ; 238 		case SETUP_BRIGHT:
  530                     ; 239 			i.display_state++;
@@ -516,7 +516,7 @@
  543  0260 b60b          	ld	a,_i+11
  544  0262 cd0000        	call	_displaySetBright
  546                     ; 244 			break;
- 547  0265 ac120312      	jpf	L702
+ 547  0265 ac170317      	jpf	L702
  548  0269               L361:
  549                     ; 246 		case SETUP_NIGHT_BR:
  549                     ; 247 			e.nBright = i.setupValue;
@@ -534,7 +534,7 @@
  562  027b a664          	ld	a,#100
  563  027d cd0000        	call	_displaySetBright
  565                     ; 252 			break;
- 566  0280 cc0312        	jra	L702
+ 566  0280 cc0317        	jra	L702
  567  0283               L561:
  568                     ; 254 		case SETUP_NIGHT_BR_EN:
  568                     ; 255 			e.nBrightEn = i.setupValue;
@@ -549,288 +549,290 @@
  578                     ; 258 			i.setupValue = e.nBrightStartH;
  579  0292 45050b        	mov	_i+11,_e+5
  580                     ; 259 			break;
- 581  0295 207b          	jra	L702
- 582  0297               L761:
+ 581  0295 cc0317        	jra	L702
+ 582  0298               L761:
  583                     ; 261 		case SETUP_NIGHT_BR_START_H:
  583                     ; 262 			e.nBrightStartH = i.setupValue;
- 584  0297 450b05        	mov	_e+5,_i+11
+ 584  0298 450b05        	mov	_e+5,_i+11
  585                     ; 263 			EEPROM_writeByte(NIGHT_BR_START_H_ADDR,e.nBrightStartH);
- 586  029a 3b0005        	push	_e+5
- 587  029d ae0005        	ldw	x,#5
- 588  02a0 cd0000        	call	_EEPROM_writeByte
- 590  02a3 84            	pop	a
+ 586  029b 3b0005        	push	_e+5
+ 587  029e ae0005        	ldw	x,#5
+ 588  02a1 cd0000        	call	_EEPROM_writeByte
+ 590  02a4 84            	pop	a
  591                     ; 264 			i.display_state++;
- 592  02a4 3c07          	inc	_i+7
+ 592  02a5 3c07          	inc	_i+7
  593                     ; 265 			i.setupValue = e.nBrightStartM;
- 594  02a6 45060b        	mov	_i+11,_e+6
+ 594  02a7 45060b        	mov	_i+11,_e+6
  595                     ; 266 			break;
- 596  02a9 2067          	jra	L702
- 597  02ab               L171:
+ 596  02aa 206b          	jra	L702
+ 597  02ac               L171:
  598                     ; 268 		case SETUP_NIGHT_BR_START_M:
  598                     ; 269 			e.nBrightStartM = i.setupValue;
- 599  02ab 450b06        	mov	_e+6,_i+11
+ 599  02ac 450b06        	mov	_e+6,_i+11
  600                     ; 270 			EEPROM_writeByte(NIGHT_BR_START_M_ADDR,e.nBrightStartM);
- 601  02ae 3b0006        	push	_e+6
- 602  02b1 ae0006        	ldw	x,#6
- 603  02b4 cd0000        	call	_EEPROM_writeByte
- 605  02b7 84            	pop	a
+ 601  02af 3b0006        	push	_e+6
+ 602  02b2 ae0006        	ldw	x,#6
+ 603  02b5 cd0000        	call	_EEPROM_writeByte
+ 605  02b8 84            	pop	a
  606                     ; 271 			i.display_state++;
- 607  02b8 3c07          	inc	_i+7
+ 607  02b9 3c07          	inc	_i+7
  608                     ; 272 			i.setupValue = e.nBrightEndH;
- 609  02ba 45070b        	mov	_i+11,_e+7
+ 609  02bb 45070b        	mov	_i+11,_e+7
  610                     ; 273 			break;
- 611  02bd 2053          	jra	L702
- 612  02bf               L371:
+ 611  02be 2057          	jra	L702
+ 612  02c0               L371:
  613                     ; 275 		case SETUP_NIGHT_BR_END_H:
  613                     ; 276 			e.nBrightEndH = i.setupValue;
- 614  02bf 450b07        	mov	_e+7,_i+11
+ 614  02c0 450b07        	mov	_e+7,_i+11
  615                     ; 277 			EEPROM_writeByte(NIGHT_BR_STOP_H_ADDR,e.nBrightEndH);
- 616  02c2 3b0007        	push	_e+7
- 617  02c5 ae0007        	ldw	x,#7
- 618  02c8 cd0000        	call	_EEPROM_writeByte
- 620  02cb 84            	pop	a
+ 616  02c3 3b0007        	push	_e+7
+ 617  02c6 ae0007        	ldw	x,#7
+ 618  02c9 cd0000        	call	_EEPROM_writeByte
+ 620  02cc 84            	pop	a
  621                     ; 278 			i.display_state++;
- 622  02cc 3c07          	inc	_i+7
+ 622  02cd 3c07          	inc	_i+7
  623                     ; 279 			i.setupValue = e.nBrightEndM;
- 624  02ce 45080b        	mov	_i+11,_e+8
+ 624  02cf 45080b        	mov	_i+11,_e+8
  625                     ; 280 			break;
- 626  02d1 203f          	jra	L702
- 627  02d3               L571:
+ 626  02d2 2043          	jra	L702
+ 627  02d4               L571:
  628                     ; 282 		case SETUP_NIGHT_BR_END_M:
  628                     ; 283 			e.nBrightEndM = i.setupValue;
- 629  02d3 450b08        	mov	_e+8,_i+11
+ 629  02d4 450b08        	mov	_e+8,_i+11
  630                     ; 284 			EEPROM_writeByte(NIGHT_BR_STOP_M_ADDR,e.nBrightEndM);
- 631  02d6 3b0008        	push	_e+8
- 632  02d9 ae0008        	ldw	x,#8
- 633  02dc cd0000        	call	_EEPROM_writeByte
- 635  02df 84            	pop	a
+ 631  02d7 3b0008        	push	_e+8
+ 632  02da ae0008        	ldw	x,#8
+ 633  02dd cd0000        	call	_EEPROM_writeByte
+ 635  02e0 84            	pop	a
  636                     ; 285 			i.display_state++;
- 637  02e0 3c07          	inc	_i+7
+ 637  02e1 3c07          	inc	_i+7
  638                     ; 286 			i.setupValue = e.rgbAtNightEn;
- 639  02e2 45090b        	mov	_i+11,_e+9
+ 639  02e3 45090b        	mov	_i+11,_e+9
  640                     ; 287 			break;
- 641  02e5 202b          	jra	L702
- 642  02e7               L771:
+ 641  02e6 202f          	jra	L702
+ 642  02e8               L771:
  643                     ; 289 		case SETUP_NIGHT_RGB_EN:
  643                     ; 290 			e.rgbAtNightEn = i.setupValue;
- 644  02e7 450b09        	mov	_e+9,_i+11
+ 644  02e8 450b09        	mov	_e+9,_i+11
  645                     ; 291 			EEPROM_writeByte(NIGHT_RGB_EN_ADDR,e.rgbAtNightEn);
- 646  02ea 3b0009        	push	_e+9
- 647  02ed ae0009        	ldw	x,#9
- 648  02f0 cd0000        	call	_EEPROM_writeByte
- 650  02f3 84            	pop	a
+ 646  02eb 3b0009        	push	_e+9
+ 647  02ee ae0009        	ldw	x,#9
+ 648  02f1 cd0000        	call	_EEPROM_writeByte
+ 650  02f4 84            	pop	a
  651                     ; 292 			i.display_state++;
- 652  02f4 3c07          	inc	_i+7
+ 652  02f5 3c07          	inc	_i+7
  653                     ; 293 			i.setupValue = e.antipoisoningAtNihgtOnly;
- 654  02f6 450a0b        	mov	_i+11,_e+10
+ 654  02f7 450a0b        	mov	_i+11,_e+10
  655                     ; 294 			break;
- 656  02f9 2017          	jra	L702
- 657  02fb               L102:
+ 656  02fa 201b          	jra	L702
+ 657  02fc               L102:
  658                     ; 296 		case SETUP_ANTIPOISONING_AT_NIGHT_ONLY:
  658                     ; 297 			e.antipoisoningAtNihgtOnly = i.setupValue;
- 659  02fb 450b0a        	mov	_e+10,_i+11
+ 659  02fc 450b0a        	mov	_e+10,_i+11
  660                     ; 298 			EEPROM_writeByte(ANTIPOISONING_AT_NIGHT_ONLY_ADDR,e.antipoisoningAtNihgtOnly);
- 661  02fe 3b000a        	push	_e+10
- 662  0301 ae000a        	ldw	x,#10
- 663  0304 cd0000        	call	_EEPROM_writeByte
- 665  0307 84            	pop	a
+ 661  02ff 3b000a        	push	_e+10
+ 662  0302 ae000a        	ldw	x,#10
+ 663  0305 cd0000        	call	_EEPROM_writeByte
+ 665  0308 84            	pop	a
  666                     ; 299 			i.display_state = SETUP_NO;
- 667  0308 35ff0007      	mov	_i+7,#255
- 668                     ; 300 			break;
- 669  030c 2004          	jra	L702
- 670  030e               L302:
- 671                     ; 302 		default:
- 671                     ; 303 			i.display_state = SETUP_NO;
- 672  030e 35ff0007      	mov	_i+7,#255
- 673                     ; 304 			break;
- 674  0312               L702:
- 675                     ; 306 }
- 676  0312 84            	pop	a
- 677  0313 81            	ret
- 679                     ; 308 void longpress_key1(void)
- 679                     ; 309 {
- 680  0314               _longpress_key1:
- 682                     ; 310 	if (ki.bf == S1_M){
- 683  0314 b601          	ld	a,_ki+1
- 684  0316 a101          	cp	a,#1
- 685  0318 2652          	jrne	L112
- 686                     ; 311 		if (i.display_state == SETUP_NO){
- 687  031a b607          	ld	a,_i+7
- 688  031c a1ff          	cp	a,#255
- 689  031e 2620          	jrne	L312
- 690                     ; 312 			if (ki.lp_counter[S1] >= 2*10){
- 691  0320 b602          	ld	a,_ki+2
- 692  0322 a114          	cp	a,#20
- 693  0324 2546          	jrult	L112
- 694                     ; 313 				i.display_state = SETUP_HOURS;
- 695  0326 350e0007      	mov	_i+7,#14
- 696                     ; 314 				i.timeSetupCounter = 60*10;
- 697  032a ae0258        	ldw	x,#600
- 698  032d bf00          	ldw	_i,x
- 699                     ; 315 				i.hoursSetupValue = i.hours;
- 700  032f 450a0d        	mov	_i+13,_i+10
- 701                     ; 316 				i.minutesSetupValue = i.minutes;
- 702  0332 45090c        	mov	_i+12,_i+9
- 703                     ; 317 				displaySetBright(100);
- 704  0335 a664          	ld	a,#100
- 705  0337 cd0000        	call	_displaySetBright
- 707                     ; 318 				bitmaskclr(ki.bf,S1_M);
- 708  033a 72110001      	bres	_ki+1,#0
- 709  033e 202c          	jra	L112
- 710  0340               L312:
- 711                     ; 320 		}else if (i.display_state > SETUP_ZERO && i.display_state < SETUP_NO){
- 712  0340 3d07          	tnz	_i+7
- 713  0342 2728          	jreq	L112
- 715  0344 b607          	ld	a,_i+7
- 716  0346 a1ff          	cp	a,#255
- 717  0348 2422          	jruge	L112
- 718                     ; 321 			if (ki.lp_counter[S1] >= 18){
- 719  034a b602          	ld	a,_ki+2
- 720  034c a112          	cp	a,#18
- 721  034e 250b          	jrult	L322
- 722                     ; 322 				if(ki.kr_counter[S1] >= 1){
- 723  0350 3d04          	tnz	_ki+4
- 724  0352 2718          	jreq	L112
- 725                     ; 323 					ki.kr_counter[S1] = 0;
- 726  0354 3f04          	clr	_ki+4
- 727                     ; 324 					event_single_key1 ();
- 728  0356 cd00cd        	call	_event_single_key1
- 730  0359 2011          	jra	L112
- 731  035b               L322:
- 732                     ; 326 			}else if (ki.lp_counter[S1] >= 8){
- 733  035b b602          	ld	a,_ki+2
- 734  035d a108          	cp	a,#8
- 735  035f 250b          	jrult	L112
- 736                     ; 327 				if(ki.kr_counter[S1] >= 2){
- 737  0361 b604          	ld	a,_ki+4
- 738  0363 a102          	cp	a,#2
- 739  0365 2505          	jrult	L112
- 740                     ; 328 					ki.kr_counter[S1] = 0;
- 741  0367 3f04          	clr	_ki+4
- 742                     ; 329 					event_single_key1 ();
- 743  0369 cd00cd        	call	_event_single_key1
- 745  036c               L112:
- 746                     ; 334 }
- 747  036c 81            	ret
- 749                     ; 336 void longpress_key2(void)
- 749                     ; 337 {
- 750  036d               _longpress_key2:
- 752                     ; 338 	if (ki.bf == S2_M){
- 753  036d b601          	ld	a,_ki+1
- 754  036f a102          	cp	a,#2
- 755  0371 2641          	jrne	L532
- 756                     ; 339 		if (i.display_state == SETUP_NO){
- 757  0373 b607          	ld	a,_i+7
- 758  0375 a1ff          	cp	a,#255
- 759  0377 263b          	jrne	L532
- 760                     ; 340 			if (ki.lp_counter[S2] >= 2*10){
- 761  0379 b603          	ld	a,_ki+3
- 762  037b a114          	cp	a,#20
- 763  037d 2535          	jrult	L532
- 764                     ; 341 				i.display_state = SETUP_R;
- 765  037f 350b0007      	mov	_i+7,#11
- 766                     ; 342 				i.setupValue = EEPROM_readByte(R_ADDR);
- 767  0383 ae000b        	ldw	x,#11
- 768  0386 cd0000        	call	_EEPROM_readByte
- 770  0389 b70b          	ld	_i+11,a
- 771                     ; 343 				displayRset(EEPROM_readByte(R_ADDR));
- 772  038b ae000b        	ldw	x,#11
- 773  038e cd0000        	call	_EEPROM_readByte
- 775  0391 cd0000        	call	_displayRset
- 777                     ; 344 				displayGset(EEPROM_readByte(G_ADDR));
- 778  0394 ae000c        	ldw	x,#12
- 779  0397 cd0000        	call	_EEPROM_readByte
- 781  039a cd0000        	call	_displayGset
- 783                     ; 345 				displayBset(EEPROM_readByte(B_ADDR));
- 784  039d ae000d        	ldw	x,#13
- 785  03a0 cd0000        	call	_EEPROM_readByte
- 787  03a3 cd0000        	call	_displayBset
- 789                     ; 346 				i.timeSetupCounter = 60*10;
- 790  03a6 ae0258        	ldw	x,#600
- 791  03a9 bf00          	ldw	_i,x
- 792                     ; 347 				displaySetBright(100);
- 793  03ab a664          	ld	a,#100
- 794  03ad cd0000        	call	_displaySetBright
- 796                     ; 348 				bitmaskclr(ki.bf,S2_M);
- 797  03b0 72130001      	bres	_ki+1,#1
- 798  03b4               L532:
- 799                     ; 353 }
- 800  03b4 81            	ret
- 802                     ; 355 void longpress_key1_2(void){
- 803  03b5               _longpress_key1_2:
- 805                     ; 356 	if ((ki.lp_counter[S1] >= 2*10)&&(ki.lp_counter[S2] >= 2*10)){
- 806  03b5 b602          	ld	a,_ki+2
- 807  03b7 a114          	cp	a,#20
- 808  03b9 2520          	jrult	L542
- 810  03bb b603          	ld	a,_ki+3
- 811  03bd a114          	cp	a,#20
- 812  03bf 251a          	jrult	L542
- 813                     ; 357 		if (i.display_state == SETUP_NO){
- 814  03c1 b607          	ld	a,_i+7
- 815  03c3 a1ff          	cp	a,#255
- 816  03c5 260e          	jrne	L742
- 817                     ; 358 			i.display_state = SETUP_ZERO;
- 818  03c7 3f07          	clr	_i+7
- 819                     ; 359 			i.setupValue = e.zeroEn;
- 820  03c9 45000b        	mov	_i+11,_e
- 821                     ; 360 			i.timeSetupCounter = 60*10;
- 822  03cc ae0258        	ldw	x,#600
- 823  03cf bf00          	ldw	_i,x
- 824                     ; 361 			displayRGBset(0);
- 825  03d1 4f            	clr	a
- 826  03d2 cd0000        	call	_displayRGBset
- 828  03d5               L742:
- 829                     ; 363 		bitmaskclr(ki.bf,(S1_M+S2_M));
- 830  03d5 b601          	ld	a,_ki+1
- 831  03d7 a4fc          	and	a,#252
- 832  03d9 b701          	ld	_ki+1,a
- 833  03db               L542:
- 834                     ; 365 }
- 835  03db 81            	ret
- 837                     ; 368 void fastReleaseKey2(void)
- 837                     ; 369 {
- 838  03dc               _fastReleaseKey2:
- 840                     ; 370 	if (ki.bf == S2_M){
- 841  03dc b601          	ld	a,_ki+1
- 842  03de a102          	cp	a,#2
- 843  03e0 260f          	jrne	L152
- 844                     ; 371 		if (ki.lp_counter[S2] < 1*10){
- 845  03e2 b603          	ld	a,_ki+3
- 846  03e4 a10a          	cp	a,#10
- 847  03e6 2409          	jruge	L152
- 848                     ; 372 			if (i.display_state == SETUP_NO){
- 849  03e8 b607          	ld	a,_i+7
- 850  03ea a1ff          	cp	a,#255
- 851  03ec 2603          	jrne	L152
- 852                     ; 373 				RGBtoggle();
- 853  03ee cd0000        	call	_RGBtoggle
- 855  03f1               L152:
- 856                     ; 377 }
- 857  03f1 81            	ret
- 859                     	xref.b	_i
- 860                     	switch	.ubsct
- 861  0000               _ki:
- 862  0000 000000000000  	ds.b	6
- 863                     	xdef	_ki
- 864                     	xdef	_fastReleaseKey2
- 865                     	xdef	_longpress_key1_2
- 866                     	xdef	_longpress_key2
- 867                     	xdef	_longpress_key1
- 868                     	xdef	_event_single_key2
- 869                     	xdef	_event_single_key1
- 870                     	xref	_EEPROM_readByte
- 871                     	xref	_EEPROM_writeByte
- 872                     	xref.b	_e
- 873                     	xref	_ds3231_write_time
- 874                     	xref	_RGBtoggle
- 875                     	xref	_iface_flag05sReset
- 876                     	xref	_displayBset
- 877                     	xref	_displayGset
- 878                     	xref	_displayRset
- 879                     	xref	_displayRGBset
- 880                     	xref	_displaySetBright
- 881                     	xref	_keyboard_get_key
- 882                     	xdef	_keyevents_counters
- 883                     	xdef	_keyevents_proc
- 884                     	xdef	_keyevents_init
- 885                     	end
+ 667  0309 35ff0007      	mov	_i+7,#255
+ 668                     ; 300 			bitmaskclr(ki.bf,S2_M);	//disable fast release key2
+ 669  030d 72130001      	bres	_ki+1,#1
+ 670                     ; 301 			break;
+ 671  0311 2004          	jra	L702
+ 672  0313               L302:
+ 673                     ; 303 		default:
+ 673                     ; 304 			i.display_state = SETUP_NO;
+ 674  0313 35ff0007      	mov	_i+7,#255
+ 675                     ; 305 			break;
+ 676  0317               L702:
+ 677                     ; 307 }
+ 678  0317 84            	pop	a
+ 679  0318 81            	ret
+ 681                     ; 309 void longpress_key1(void)
+ 681                     ; 310 {
+ 682  0319               _longpress_key1:
+ 684                     ; 311 	if (ki.bf == S1_M){
+ 685  0319 b601          	ld	a,_ki+1
+ 686  031b a101          	cp	a,#1
+ 687  031d 2652          	jrne	L112
+ 688                     ; 312 		if (i.display_state == SETUP_NO){
+ 689  031f b607          	ld	a,_i+7
+ 690  0321 a1ff          	cp	a,#255
+ 691  0323 2620          	jrne	L312
+ 692                     ; 313 			if (ki.lp_counter[S1] >= 2*10){
+ 693  0325 b602          	ld	a,_ki+2
+ 694  0327 a114          	cp	a,#20
+ 695  0329 2546          	jrult	L112
+ 696                     ; 314 				i.display_state = SETUP_HOURS;
+ 697  032b 350e0007      	mov	_i+7,#14
+ 698                     ; 315 				i.timeSetupCounter = 60*10;
+ 699  032f ae0258        	ldw	x,#600
+ 700  0332 bf00          	ldw	_i,x
+ 701                     ; 316 				i.hoursSetupValue = i.hours;
+ 702  0334 450a0d        	mov	_i+13,_i+10
+ 703                     ; 317 				i.minutesSetupValue = i.minutes;
+ 704  0337 45090c        	mov	_i+12,_i+9
+ 705                     ; 318 				displaySetBright(100);
+ 706  033a a664          	ld	a,#100
+ 707  033c cd0000        	call	_displaySetBright
+ 709                     ; 319 				bitmaskclr(ki.bf,S1_M);
+ 710  033f 72110001      	bres	_ki+1,#0
+ 711  0343 202c          	jra	L112
+ 712  0345               L312:
+ 713                     ; 321 		}else if (i.display_state > SETUP_ZERO && i.display_state < SETUP_NO){
+ 714  0345 3d07          	tnz	_i+7
+ 715  0347 2728          	jreq	L112
+ 717  0349 b607          	ld	a,_i+7
+ 718  034b a1ff          	cp	a,#255
+ 719  034d 2422          	jruge	L112
+ 720                     ; 322 			if (ki.lp_counter[S1] >= 18){
+ 721  034f b602          	ld	a,_ki+2
+ 722  0351 a112          	cp	a,#18
+ 723  0353 250b          	jrult	L322
+ 724                     ; 323 				if(ki.kr_counter[S1] >= 1){
+ 725  0355 3d04          	tnz	_ki+4
+ 726  0357 2718          	jreq	L112
+ 727                     ; 324 					ki.kr_counter[S1] = 0;
+ 728  0359 3f04          	clr	_ki+4
+ 729                     ; 325 					event_single_key1 ();
+ 730  035b cd00cd        	call	_event_single_key1
+ 732  035e 2011          	jra	L112
+ 733  0360               L322:
+ 734                     ; 327 			}else if (ki.lp_counter[S1] >= 8){
+ 735  0360 b602          	ld	a,_ki+2
+ 736  0362 a108          	cp	a,#8
+ 737  0364 250b          	jrult	L112
+ 738                     ; 328 				if(ki.kr_counter[S1] >= 2){
+ 739  0366 b604          	ld	a,_ki+4
+ 740  0368 a102          	cp	a,#2
+ 741  036a 2505          	jrult	L112
+ 742                     ; 329 					ki.kr_counter[S1] = 0;
+ 743  036c 3f04          	clr	_ki+4
+ 744                     ; 330 					event_single_key1 ();
+ 745  036e cd00cd        	call	_event_single_key1
+ 747  0371               L112:
+ 748                     ; 335 }
+ 749  0371 81            	ret
+ 751                     ; 337 void longpress_key2(void)
+ 751                     ; 338 {
+ 752  0372               _longpress_key2:
+ 754                     ; 339 	if (ki.bf == S2_M){
+ 755  0372 b601          	ld	a,_ki+1
+ 756  0374 a102          	cp	a,#2
+ 757  0376 2641          	jrne	L532
+ 758                     ; 340 		if (i.display_state == SETUP_NO){
+ 759  0378 b607          	ld	a,_i+7
+ 760  037a a1ff          	cp	a,#255
+ 761  037c 263b          	jrne	L532
+ 762                     ; 341 			if (ki.lp_counter[S2] >= 2*10){
+ 763  037e b603          	ld	a,_ki+3
+ 764  0380 a114          	cp	a,#20
+ 765  0382 2535          	jrult	L532
+ 766                     ; 342 				i.display_state = SETUP_R;
+ 767  0384 350b0007      	mov	_i+7,#11
+ 768                     ; 343 				i.setupValue = EEPROM_readByte(R_ADDR);
+ 769  0388 ae000b        	ldw	x,#11
+ 770  038b cd0000        	call	_EEPROM_readByte
+ 772  038e b70b          	ld	_i+11,a
+ 773                     ; 344 				displayRset(EEPROM_readByte(R_ADDR));
+ 774  0390 ae000b        	ldw	x,#11
+ 775  0393 cd0000        	call	_EEPROM_readByte
+ 777  0396 cd0000        	call	_displayRset
+ 779                     ; 345 				displayGset(EEPROM_readByte(G_ADDR));
+ 780  0399 ae000c        	ldw	x,#12
+ 781  039c cd0000        	call	_EEPROM_readByte
+ 783  039f cd0000        	call	_displayGset
+ 785                     ; 346 				displayBset(EEPROM_readByte(B_ADDR));
+ 786  03a2 ae000d        	ldw	x,#13
+ 787  03a5 cd0000        	call	_EEPROM_readByte
+ 789  03a8 cd0000        	call	_displayBset
+ 791                     ; 347 				i.timeSetupCounter = 60*10;
+ 792  03ab ae0258        	ldw	x,#600
+ 793  03ae bf00          	ldw	_i,x
+ 794                     ; 348 				displaySetBright(100);
+ 795  03b0 a664          	ld	a,#100
+ 796  03b2 cd0000        	call	_displaySetBright
+ 798                     ; 349 				bitmaskclr(ki.bf,S2_M);
+ 799  03b5 72130001      	bres	_ki+1,#1
+ 800  03b9               L532:
+ 801                     ; 353 }
+ 802  03b9 81            	ret
+ 804                     ; 355 void longpress_key1_2(void){
+ 805  03ba               _longpress_key1_2:
+ 807                     ; 356 	if ((ki.lp_counter[S1] >= 2*10)&&(ki.lp_counter[S2] >= 2*10)){
+ 808  03ba b602          	ld	a,_ki+2
+ 809  03bc a114          	cp	a,#20
+ 810  03be 2520          	jrult	L342
+ 812  03c0 b603          	ld	a,_ki+3
+ 813  03c2 a114          	cp	a,#20
+ 814  03c4 251a          	jrult	L342
+ 815                     ; 357 		if (i.display_state == SETUP_NO){
+ 816  03c6 b607          	ld	a,_i+7
+ 817  03c8 a1ff          	cp	a,#255
+ 818  03ca 260e          	jrne	L542
+ 819                     ; 358 			i.display_state = SETUP_ZERO;
+ 820  03cc 3f07          	clr	_i+7
+ 821                     ; 359 			i.setupValue = e.zeroEn;
+ 822  03ce 45000b        	mov	_i+11,_e
+ 823                     ; 360 			i.timeSetupCounter = 60*10;
+ 824  03d1 ae0258        	ldw	x,#600
+ 825  03d4 bf00          	ldw	_i,x
+ 826                     ; 361 			displayRGBset(0);
+ 827  03d6 4f            	clr	a
+ 828  03d7 cd0000        	call	_displayRGBset
+ 830  03da               L542:
+ 831                     ; 363 		bitmaskclr(ki.bf,(S1_M+S2_M));
+ 832  03da b601          	ld	a,_ki+1
+ 833  03dc a4fc          	and	a,#252
+ 834  03de b701          	ld	_ki+1,a
+ 835  03e0               L342:
+ 836                     ; 365 }
+ 837  03e0 81            	ret
+ 839                     ; 368 void fastReleaseKey2(void)
+ 839                     ; 369 {
+ 840  03e1               _fastReleaseKey2:
+ 842                     ; 370 	if (ki.bf == S2_M){
+ 843  03e1 b601          	ld	a,_ki+1
+ 844  03e3 a102          	cp	a,#2
+ 845  03e5 260f          	jrne	L742
+ 846                     ; 371 		if (ki.lp_counter[S2] < 1*10){
+ 847  03e7 b603          	ld	a,_ki+3
+ 848  03e9 a10a          	cp	a,#10
+ 849  03eb 2409          	jruge	L742
+ 850                     ; 372 			if (i.display_state == SETUP_NO){
+ 851  03ed b607          	ld	a,_i+7
+ 852  03ef a1ff          	cp	a,#255
+ 853  03f1 2603          	jrne	L742
+ 854                     ; 373 				RGBtoggle();
+ 855  03f3 cd0000        	call	_RGBtoggle
+ 857  03f6               L742:
+ 858                     ; 377 }
+ 859  03f6 81            	ret
+ 861                     	xref.b	_i
+ 862                     	switch	.ubsct
+ 863  0000               _ki:
+ 864  0000 000000000000  	ds.b	6
+ 865                     	xdef	_ki
+ 866                     	xdef	_fastReleaseKey2
+ 867                     	xdef	_longpress_key1_2
+ 868                     	xdef	_longpress_key2
+ 869                     	xdef	_longpress_key1
+ 870                     	xdef	_event_single_key2
+ 871                     	xdef	_event_single_key1
+ 872                     	xref	_EEPROM_readByte
+ 873                     	xref	_EEPROM_writeByte
+ 874                     	xref.b	_e
+ 875                     	xref	_ds3231_write_time
+ 876                     	xref	_RGBtoggle
+ 877                     	xref	_iface_flag05sReset
+ 878                     	xref	_displayBset
+ 879                     	xref	_displayGset
+ 880                     	xref	_displayRset
+ 881                     	xref	_displayRGBset
+ 882                     	xref	_displaySetBright
+ 883                     	xref	_keyboard_get_key
+ 884                     	xdef	_keyevents_counters
+ 885                     	xdef	_keyevents_proc
+ 886                     	xdef	_keyevents_init
+ 887                     	end

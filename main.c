@@ -8,13 +8,11 @@
 #include "eeprom.h"
 
 /* 
- ¬≈–’Ќя  Ќќѕ ј ћ≈Ќя≈“ эффекты
- Ќ»∆Ќяя  Ќќѕ ј ¬ Ћё„ј≈“/ќ“ Ћё„ј≈“ RGB ѕќƒ—¬≈“ ”
+ UP BUTTON   - change effects
+ DOWN BUTTON - on/off RBG backlight
  
- todo допилить 12/24 пока не придмал как чЄтко сделать
- todo сделать выход из меню по удержанию кнопки 2
- todo при выходе из меню включаетс€ RGB, исправить.
- todo если будет место запилить таблицу дл€ гамма компенсации
+ todo 12/24
+ todo if there is enough ROM - gamma compensation for RGB.
 */
 
 int main(void) {

@@ -297,6 +297,7 @@ void event_single_key2(void)
 			e.antipoisoningAtNihgtOnly = i.setupValue;
 			EEPROM_writeByte(ANTIPOISONING_AT_NIGHT_ONLY_ADDR,e.antipoisoningAtNihgtOnly);
 			i.display_state = SETUP_NO;
+			bitmaskclr(ki.bf,S2_M);	//disable fast release key2
 			break;
 
 		default:
@@ -347,7 +348,6 @@ void longpress_key2(void)
 				displaySetBright(100);
 				bitmaskclr(ki.bf,S2_M);
 			}
-		}else{
 		}
 	}
 }

@@ -4,7 +4,6 @@ eeprom.c
 iface.c
 display.c
 ds3231.c
-gpio.c
 hc595.c
 i2c.c
 main.c
@@ -17,7 +16,6 @@ eeprom.h
 iface.h
 display.h
 ds3231.h
-gpio.h
 hc595.h
 i2c.h
 macro.h
