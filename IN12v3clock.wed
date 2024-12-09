@@ -731,7 +731,7 @@ MRUDockID=0
 MRUDockLeftPos=1
 MRUDockTopPos=-2
 MRUDockRightPos=266
-MRUDockBottomPos=831
+MRUDockBottomPos=1
 MRUFloatStyle=4
 MRUFloatXPos=-1
 MRUFloatYPos=0
@@ -764,7 +764,7 @@ Docking=True
 MRUDockID=59422
 MRUDockLeftPos=1
 MRUDockTopPos=5
-MRUDockRightPos=1920
+MRUDockRightPos=1
 MRUDockBottomPos=205
 MRUFloatStyle=4
 MRUFloatXPos=-1
@@ -1243,7 +1243,7 @@ ptn_Child1=MainFrame
 ptn_Child2=ChildFrames
 
 [WorkState_v1_2.Frames.MainFrame]
-WindowPlacement=MCAAAAAACAAAAAAADAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPKAAAAAAAGAAAAAAADDEAAAAAABEAAAAA
+WindowPlacement=MCAAAAAACAAAAAAADAAAAAAAAADIPPPPAADIPPPPPPPPPPPPPPPPPPPPKAAAAAAAGAAAAAAADDEAAAAAABEAAAAA
 Title=ST Visual Develop - IN12v3clock.stw - [display.h]
 
 [WorkState_v1_2.Frames.ChildFrames]
