@@ -8,8 +8,6 @@
 
 static 					uint8_t zero_data[5] 							= {0,0,0,0,0};
 static volatile uint8_t disp_data[5]							= {0,0,0,0,0};
-static volatile uint8_t disp_data_bright_set[5] 	= {0,0,0,0,0};
-
 static 					uint8_t dotPulseCounter;
 			 volatile uint8_t flag10ms;
 static 					uint16_t displayBright;
@@ -49,7 +47,7 @@ void displayInit ( void )
 	hc595Init();
 	displaySetBright(100);
 	displayDot(0);
-	hc595ChainShiftOut(disp_data,sizeof(disp_data));
+	hc595ChainShiftOut(zero_data,sizeof(zero_data));
 	
 	
 	RGBinit();
