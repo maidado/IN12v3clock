@@ -40,6 +40,10 @@ typedef struct
 	uint8_t 	counter1s;
 	uint8_t		flag05s;
 	uint8_t		flag100ms;
+	uint8_t		counter150ms;
+	uint8_t 	antipoisoningEn;
+	uint8_t 	antipoisoningOldDigit;
+	uint8_t 	antipoisoningCurrentDigit;
 }Iface;
 
 

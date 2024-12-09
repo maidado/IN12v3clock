@@ -13,9 +13,8 @@ static volatile uint8_t disp_data_bright_set[5] 	= {0,0,0,0,0};
 static 					uint8_t dotPulseCounter;
 			 volatile uint8_t flag10ms;
 static 					uint16_t displayBright;
-static volatile uint8_t flagBrightSet;
 
-static uint8_t *displayNixieBuffPrepare(uint8_t *inbuff);
+static uint8_t *displayNixieBuffPrepare(uint8_t *inbuff, uint8_t dmask);
 static void displaySetDotBright( uint8_t bright);
 
 void displayInit ( void )
@@ -58,154 +57,159 @@ void displayInit ( void )
 }
 
 //inbuff -> {minutes,tens of minutes,hours,tens of hours}
-static uint8_t *displayNixieBuffPrepare(uint8_t *inbuff)
+//dmask  -> bitmask of digits that have been prepared
+static uint8_t *displayNixieBuffPrepare(uint8_t *inbuff, uint8_t dmask)
 {
 	uint8_t data[5] = {0,0,0,0,0};
 	
-	// minutes
-	switch(inbuff[0]){
-		case 0:
-			bitset(data[4],0);
-			break;
-		case 1:
-			bitset(data[4],1);
-			break;
-		case 2:
-			bitset(data[4],2);
-			break;
-		case 3:
-			bitset(data[4],3);
-			break;
-		case 4:
-			bitset(data[4],4);
-			break;
-		case 5:
-			bitset(data[4],5);
-			break;
-		case 6:
-			bitset(data[4],6);
-			break;
-		case 7:
-			bitset(data[4],7);
-			break;
-		case 8:
-			bitset(data[3],0);
-			break;
-		case 9:
-			bitset(data[3],1);
-			break;
-		default:
-		break;
+	if (bitchk(dmask,0)){
+		// minutes
+		switch(inbuff[0]){
+			case 0:
+				bitset(data[4],0);
+				break;
+			case 1:
+				bitset(data[4],1);
+				break;
+			case 2:
+				bitset(data[4],2);
+				break;
+			case 3:
+				bitset(data[4],3);
+				break;
+			case 4:
+				bitset(data[4],4);
+				break;
+			case 5:
+				bitset(data[4],5);
+				break;
+			case 6:
+				bitset(data[4],6);
+				break;
+			case 7:
+				bitset(data[4],7);
+				break;
+			case 8:
+				bitset(data[3],0);
+				break;
+			case 9:
+				bitset(data[3],1);
+				break;
+			default:
+				break;
+		}
 	}
-	
-	// tens of minutes
-	switch(inbuff[1]){
-		case 0:
-			bitset(data[3],2);
+	if (bitchk(dmask,1)){
+		// tens of minutes
+		switch(inbuff[1]){
+			case 0:
+				bitset(data[3],2);
+				break;
+			case 1:
+				bitset(data[3],3);
+				break;
+			case 2:
+				bitset(data[3],4);
+				break;
+			case 3:
+				bitset(data[3],5);
+				break;
+			case 4:
+				bitset(data[3],6);
+				break;
+			case 5:
+				bitset(data[3],7);
+				break;
+			case 6:
+				bitset(data[2],0);
+				break;
+			case 7:
+				bitset(data[2],1);
+				break;
+			case 8:
+				bitset(data[2],2);
+				break;
+			case 9:
+				bitset(data[2],3);
+				break;
+			default:
 			break;
-		case 1:
-			bitset(data[3],3);
-			break;
-		case 2:
-			bitset(data[3],4);
-			break;
-		case 3:
-			bitset(data[3],5);
-			break;
-		case 4:
-			bitset(data[3],6);
-			break;
-		case 5:
-			bitset(data[3],7);
-			break;
-		case 6:
-			bitset(data[2],0);
-			break;
-		case 7:
-			bitset(data[2],1);
-			break;
-		case 8:
-			bitset(data[2],2);
-			break;
-		case 9:
-			bitset(data[2],3);
-			break;
-		default:
-		break;
+		}
 	}
-	
-	// hours
-	switch(inbuff[2]){
-		case 0:
-			bitset(data[2],4);
+	if (bitchk(dmask,2)){
+		// hours
+		switch(inbuff[2]){
+			case 0:
+				bitset(data[2],4);
+				break;
+			case 1:
+				bitset(data[2],5);
+				break;
+			case 2:
+				bitset(data[2],6);
+				break;
+			case 3:
+				bitset(data[2],7);
+				break;
+			case 4:
+				bitset(data[1],0);
+				break;
+			case 5:
+				bitset(data[1],1);
+				break;
+			case 6:
+				bitset(data[1],2);
+				break;
+			case 7:
+				bitset(data[1],3);
+				break;
+			case 8:
+				bitset(data[1],4);
+				break;
+			case 9:
+				bitset(data[1],5);
+				break;
+			default:
 			break;
-		case 1:
-			bitset(data[2],5);
-			break;
-		case 2:
-			bitset(data[2],6);
-			break;
-		case 3:
-			bitset(data[2],7);
-			break;
-		case 4:
-			bitset(data[1],0);
-			break;
-		case 5:
-			bitset(data[1],1);
-			break;
-		case 6:
-			bitset(data[1],2);
-			break;
-		case 7:
-			bitset(data[1],3);
-			break;
-		case 8:
-			bitset(data[1],4);
-			break;
-		case 9:
-			bitset(data[1],5);
-			break;
-		default:
-		break;
+		}
 	}
-	
-	// tens of hours
-  switch(inbuff[3]){
-		case 0:
-			bitset(data[1],6);
+	if (bitchk(dmask,3)){
+		// tens of hours
+		switch(inbuff[3]){
+			case 0:
+				bitset(data[1],6);
+				break;
+			case 1:
+				bitset(data[1],7);
+				break;
+			case 2:
+				bitset(data[0],0);
+				break;
+			case 3:
+				bitset(data[0],1);
+				break;
+			case 4:
+				bitset(data[0],2);
+				break;
+			case 5:
+				bitset(data[0],3);
+				break;
+			case 6:
+				bitset(data[0],4);
+				break;
+			case 7:
+				bitset(data[0],5);
+				break;
+			case 8:
+				bitset(data[0],6);
+				break;
+			case 9:
+				bitset(data[0],7);
+				break;
+			default:
 			break;
-		case 1:
-			bitset(data[1],7);
-			break;
-		case 2:
-			bitset(data[0],0);
-			break;
-		case 3:
-			bitset(data[0],1);
-			break;
-		case 4:
-			bitset(data[0],2);
-			break;
-		case 5:
-			bitset(data[0],3);
-			break;
-		case 6:
-			bitset(data[0],4);
-			break;
-		case 7:
-			bitset(data[0],5);
-			break;
-		case 8:
-			bitset(data[0],6);
-			break;
-		case 9:
-			bitset(data[0],7);
-			break;
-		default:
-		break;
+		}
 	}
-
 	return data;
 }
 
@@ -228,21 +232,10 @@ void displaySetBright(uint8_t bright)
 /*input: 
 uint8_t data[4] -> {minutes,tens of minutes,hours,tens of hours}
 */
-void displayNixie(uint8_t *data)
+void displayNixie(uint8_t *data, uint8_t full_bright_bitmask)
 {
-	memcpy(disp_data,displayNixieBuffPrepare(data),sizeof(disp_data));
-	flagBrightSet = 0;
-}
-
-void displayNixieBrightSet(uint8_t *data)
-{
-	memcpy(disp_data,displayNixieBuffPrepare(data),sizeof(disp_data));
-	memcpy(disp_data_bright_set,disp_data,sizeof(disp_data_bright_set));
-	disp_data_bright_set[1] &= bin(11000000);
-	disp_data_bright_set[2] = 0;
-	disp_data_bright_set[3] = 0;
-	disp_data_bright_set[4] = 0;
-	flagBrightSet = 1;
+	memcpy(disp_data,displayNixieBuffPrepare(data,bin(00001111)),sizeof(disp_data));
+	memcpy(zero_data,displayNixieBuffPrepare(data,full_bright_bitmask),sizeof(zero_data));
 }
 
 void displayDot (uint8_t state) 
@@ -312,11 +305,7 @@ ISR_HANDLER (TIM2_CAP_ISR, _TIM2_CAPCOM_CC1IF_VECTOR_)
 {
 	//для цифр
 	if(sfr_TIM2.SR1.CC1IF){
-		if(flagBrightSet){
-			hc595ChainShiftOut(disp_data_bright_set,sizeof(disp_data_bright_set));
-		}else{
-			hc595ChainShiftOut(zero_data,sizeof(zero_data));
-		}
+		hc595ChainShiftOut(zero_data,sizeof(zero_data));
 		sfr_TIM2.SR1.CC1IF = 0;
 	}
 	

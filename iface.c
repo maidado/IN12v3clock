@@ -10,6 +10,7 @@
 Iface i;
 
 static void timer50msProc(void);
+static void timer150msProc(void);
 static void iface_display(void);
 static void iface_disp2decDigit (uint8_t value, uint8_t *d0, uint8_t *d1);
 static void iface_disp2bcdDigit (uint8_t value, uint8_t *d0, uint8_t *d1);
@@ -18,11 +19,11 @@ static void iface_disp3decDigit (uint16_t value, uint8_t *d0, uint8_t *d1, uint8
 void iface_init( void )
 {
 	i.display_state = SETUP_NO;
+	//ds3231_read_time(&i.seconds,&i.minutes,&i.hours);
 	
-	
-	i.display_state = SETUP_ZERO;
-	i.setupValue = e.zeroEn;
-	i.timeSetupCounter = 60*10;
+	//i.display_state = SETUP_ZERO;
+	//i.setupValue = e.zeroEn;
+	//i.timeSetupCounter = 60*10;
 	displayRGBset(0);
 }
 
@@ -41,14 +42,14 @@ void iface_proc ( void )
 		switch(proc_fase){
 			case 1: 
 				// counter for time get time from ds3231 and start blinking dot if needed
-				if (++counter50ms>(5-1)){
+				if (++counter50ms> 5-1){
 					counter50ms = 0;
 					timer50msProc();
 				}
 				break;
 			
 			case 2:
-				if (++counter100ms>(10-1)){
+				if (++counter100ms> 10-1){
 					counter100ms = 0;
 					localFlag100ms = 1;	//flag for pocess 100ms tasks
 					
@@ -69,14 +70,21 @@ void iface_proc ( void )
 					}
 				}
 				break;
-				
+			
 			case 3:
+				if (++i.counter150ms > 10-1){
+					i.counter150ms = 0;
+					timer150msProc();
+				}
+				break;
+			
+			case 4:
 				if (localFlag100ms){
 					keyevents_counters();
 				}
 				break;
 			
-			case 4:
+			case 5:
 				if (localFlag100ms) {
 					iface_display();
 					localFlag100ms = 0;
@@ -119,39 +127,78 @@ static void timer50msProc(void)
 	}
 }
 
+static void timer150msProc(void)
+{
+	if (i.antipoisoningEn) {
+		i.antipoisoningOldDigit--;
+		if (i.antipoisoningOldDigit == 255){
+			i.antipoisoningOldDigit = 9;
+		}
+		if (i.antipoisoningOldDigit == i.antipoisoningCurrentDigit){
+			i.antipoisoningEn = 0;
+		}else{
+			iface_disp2bcdDigit(i.minutes, &i.display[0], &i.display[1]);
+			iface_disp2bcdDigit(i.hours, &i.display[2], &i.display[3]);
+			i.display[0] = i.antipoisoningOldDigit;
+			displayNixie(&i.display[0],bin(00000001));
+		}
+	}
+}
+
 static void iface_display(void)
 {
-	uint8_t secondsLast;
+	static uint8_t secondsLast;
+	static uint8_t minutesLast;
 	uint16_t current_minutes;
 	uint16_t start_minutes;
 	uint16_t end_minutes;
 	
 	switch(i.display_state){
 		case SETUP_NO:
-			iface_disp2bcdDigit(i.minutes, &i.display[0], &i.display[1]);
-			iface_disp2bcdDigit(i.hours, &i.display[2], &i.display[3]);
-			if (!e.zeroEn){
-				if ((i.hours&0xF0)==0){
-					i.display[3] = NIXIE_OFF;
-				}
-			}
-			displayNixie(&i.display[0]);
-			
-			if (i.seconds != secondsLast){
-				secondsLast = i.seconds;
+			if (i.minutes != minutesLast){
+				minutesLast = i.minutes;
+				i.antipoisoningCurrentDigit = i.minutes&0x0F;
+				i.antipoisoningOldDigit = i.antipoisoningCurrentDigit;
 				
-				if (e.nBrightEn){
-					current_minutes = time_to_minutes(bcd_to_decimal(i.hours), bcd_to_decimal(i.minutes));
-					start_minutes 	=	time_to_minutes(e.nBrightStartH, e.nBrightStartM);
-					end_minutes 		= time_to_minutes(e.nBrightEndH, e.nBrightEndM);
+				if (--i.antipoisoningOldDigit  == 0xFF){
+					i.antipoisoningOldDigit = 9;
+				}
+				i.antipoisoningEn = 1; 
+				i.counter150ms = 0;
+			}
+			
+			if (!i.antipoisoningEn) {
+				iface_disp2bcdDigit(i.minutes, &i.display[0], &i.display[1]);
+				iface_disp2bcdDigit(i.hours, &i.display[2], &i.display[3]);
+				if (!e.zeroEn){
+					if ((i.hours&0xF0)==0){
+						i.display[3] = NIXIE_OFF;
+					}
+				}
+				displayNixie(&i.display[0],0);
+			
+			
+				if (i.seconds != secondsLast){
+					secondsLast = i.seconds;
 					
-					if (is_time_in_interval(current_minutes, start_minutes, end_minutes)) {
-						displaySetBright(e.nBright);
-						if (e.rgbGlobalEn){
-							if (e.rgbAtNightEn){
+					if (e.nBrightEn){
+						current_minutes = time_to_minutes(bcd_to_decimal(i.hours), bcd_to_decimal(i.minutes));
+						start_minutes 	=	time_to_minutes(e.nBrightStartH, e.nBrightStartM);
+						end_minutes 		= time_to_minutes(e.nBrightEndH, e.nBrightEndM);
+						
+						if (is_time_in_interval(current_minutes, start_minutes, end_minutes)) {
+							displaySetBright(e.nBright);
+							if (e.rgbGlobalEn){
+								if (e.rgbAtNightEn){
+									displayRGBset(1);
+								}else{
+									displayRGBset(0);
+								}
+							}
+						} else {
+							displaySetBright(e.bright);
+							if (e.rgbGlobalEn){
 								displayRGBset(1);
-							}else{
-								displayRGBset(0);
 							}
 						}
 					} else {
@@ -160,14 +207,8 @@ static void iface_display(void)
 							displayRGBset(1);
 						}
 					}
-				} else {
-					displaySetBright(e.bright);
-					if (e.rgbGlobalEn){
-						displayRGBset(1);
-					}
 				}
 			}
-			
 			break;
 		
 		case SETUP_HOURS:
@@ -177,7 +218,7 @@ static void iface_display(void)
 				i.display[2] = NIXIE_OFF;
 				i.display[3] = NIXIE_OFF;
 			}
-			displayNixie(&i.display[0]);
+			displayNixie(&i.display[0],0);
 			displayDot(1);
 			break;
 		
@@ -188,7 +229,7 @@ static void iface_display(void)
 				i.display[0] = NIXIE_OFF;
 				i.display[1] = NIXIE_OFF;
 			}
-			displayNixie(&i.display[0]);
+			displayNixie(&i.display[0],0);
 			displayDot(1);
 			break;
 		
@@ -201,7 +242,7 @@ static void iface_display(void)
 			}else{
 				i.display[3] = i.display_state-11;
 			}
-			displayNixie(&i.display[0]);
+			displayNixie(&i.display[0],0);
 			displayDot(0);
 			break;
 		
@@ -209,7 +250,7 @@ static void iface_display(void)
 		case SETUP_NIGHT_BR:
 			i.display[3] = i.display_state;
 			iface_disp3decDigit (i.setupValue, &i.display[0], &i.display[1], &i.display[2]);
-			displayNixieBrightSet(&i.display[0]);
+			displayNixie(&i.display[0],bin(00001000));
 			displayDot(0);
 		break;
 		
@@ -226,7 +267,7 @@ static void iface_display(void)
 			}
 			i.display[1] = NIXIE_OFF;
 			i.display[0] = i.setupValue;
-			displayNixie(&i.display[0]);
+			displayNixie(&i.display[0],0);
 			displayDot(0);
 			break;
 		
@@ -237,7 +278,7 @@ static void iface_display(void)
 			iface_disp2decDigit(i.setupValue, &i.display[0], &i.display[1]);
 			i.display[2] = NIXIE_OFF;
 			i.display[3] = i.display_state;
-			displayNixie(&i.display[0]);
+			displayNixie(&i.display[0],0);
 			displayDot(0);
 			break;
 		

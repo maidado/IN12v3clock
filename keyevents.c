@@ -105,6 +105,14 @@ void keyevents_counters ( void )
 void event_single_key1(void)
 {
 	switch(i.display_state){
+		case SETUP_NO:
+				i.antipoisoningCurrentDigit = i.minutes&0x0F;
+				if (--i.antipoisoningCurrentDigit  == 0xFF){
+					i.antipoisoningCurrentDigit = 9;
+				}
+				i.antipoisoningEn = 1; 
+				i.counter150ms = 0;
+			break;
 		case SETUP_HOURS:
 			iface_flag05sReset();
 			++i.hoursSetupValue;
@@ -359,6 +367,7 @@ void longpress_key1_2(void){
 			i.setupValue = e.zeroEn;
 			i.timeSetupCounter = 60*10;
 			displayRGBset(0);
+			displaySetBright(100);
 		}
 		bitmaskclr(ki.bf,(S1_M+S2_M));
 	}

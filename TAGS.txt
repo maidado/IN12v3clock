@@ -483,11 +483,11 @@ EEPROM_ADDR_END	stm8_headers\include\stm8s003f3.h	202;"	macro
 EEPROM_ADDR_START	stm8_headers\include\stm8s003f3.h	201;"	macro
 EEPROM_SIZE	stm8_headers\include\stm8s003f3.h	203;"	macro
 EEPROM_dataInit	eeprom.c	6;"	function	signature:(void)
-EEPROM_dataInit	eeprom.h	46;"	prototype	signature:(void)
-EEPROM_readByte	eeprom.c	157;"	function	signature:(uint16_t logAddr)
-EEPROM_readByte	eeprom.h	48;"	prototype	signature:(uint16_t logAddr)
-EEPROM_writeByte	eeprom.c	108;"	function	signature:(uint16_t logAddr, uint8_t data)
-EEPROM_writeByte	eeprom.h	47;"	prototype	signature:(uint16_t logAddr, uint8_t data)
+EEPROM_dataInit	eeprom.h	47;"	prototype	signature:(void)
+EEPROM_readByte	eeprom.c	163;"	function	signature:(uint16_t logAddr)
+EEPROM_readByte	eeprom.h	49;"	prototype	signature:(uint16_t logAddr)
+EEPROM_writeByte	eeprom.c	114;"	function	signature:(uint16_t logAddr, uint8_t data)
+EEPROM_writeByte	eeprom.h	48;"	prototype	signature:(uint16_t logAddr, uint8_t data)
 EGR	stm8_headers\include\stm8s003f3.h	3162;"	member	struct:__anon258	typeref:union:__anon258::__anon273
 EGR	stm8_headers\include\stm8s003f3.h	3740;"	member	struct:__anon323	typeref:union:__anon323::__anon332
 EGR	stm8_headers\include\stm8s003f3.h	4130;"	member	struct:__anon366	typeref:union:__anon366::__anon373
@@ -511,7 +511,7 @@ ETPS	stm8_headers\include\stm8s003f3.h	3060;"	member	struct:__anon258::__anon265
 ETR	stm8_headers\include\stm8s003f3.h	3068;"	member	struct:__anon258	typeref:union:__anon258::__anon265
 EXTSEL	stm8_headers\include\stm8s003f3.h	707;"	member	struct:__anon5::__anon50::__anon51
 EXTTRIG	stm8_headers\include\stm8s003f3.h	708;"	member	struct:__anon5::__anon50::__anon51
-Edata	eeprom.h	41;"	typedef	typeref:struct:__anon3
+Edata	eeprom.h	42;"	typedef	typeref:struct:__anon3
 F1224_ADDR	eeprom.h	10;"	enumerator	enum:eeprom_adreses
 FAMILY_STM8S	stm8_headers\include\stm8s003f3.h	48;"	macro
 FE	stm8_headers\include\stm8s003f3.h	4206;"	member	struct:__anon381::__anon382::__anon383
@@ -602,8 +602,8 @@ INT_LEAST8_MAX	c:\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h
 INT_LEAST8_MIN	c:\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	59;"	macro
 IREN	stm8_headers\include\stm8s003f3.h	4373;"	member	struct:__anon381::__anon398::__anon399
 IRLP	stm8_headers\include\stm8s003f3.h	4374;"	member	struct:__anon381::__anon398::__anon399
-ISR_HANDLER	display.c	314;"	function
-ISR_HANDLER	display.c	327;"	function
+ISR_HANDLER	display.c	444;"	function
+ISR_HANDLER	display.c	457;"	function
 ISR_HANDLER	stm8_headers\include\stm8s003f3.h	130;"	macro
 ISR_HANDLER	stm8_headers\include\stm8s003f3.h	70;"	macro
 ISR_HANDLER	stm8_headers\include\stm8s003f3.h	98;"	macro
@@ -617,7 +617,7 @@ ITEVTEN	stm8_headers\include\stm8s003f3.h	2072;"	member	struct:__anon157::__anon
 ITR	stm8_headers\include\stm8s003f3.h	2080;"	member	struct:__anon157	typeref:union:__anon157::__anon176
 IWDGF	stm8_headers\include\stm8s003f3.h	2219;"	member	struct:__anon186::__anon191::__anon192
 IWDG_t	stm8_headers\include\stm8s003f3.h	2458;"	typedef	typeref:struct:__anon209
-Iface	iface.h	43;"	typedef	typeref:struct:__anon4
+Iface	iface.h	47;"	typedef	typeref:struct:__anon4
 KEY	stm8_headers\include\stm8s003f3.h	2415;"	member	struct:__anon209::__anon210::__anon211
 KEYS_COUNT	keyevents.h	8;"	macro
 KR	stm8_headers\include\stm8s003f3.h	2421;"	member	struct:__anon209	typeref:union:__anon209::__anon210
@@ -818,8 +818,8 @@ RGBsetG	rgb.c	63;"	function	signature:( uint16_t value )
 RGBsetG	rgb.h	11;"	prototype	signature:( uint16_t value )
 RGBsetR	rgb.c	57;"	function	signature:( uint16_t value )
 RGBsetR	rgb.h	10;"	prototype	signature:( uint16_t value )
-RGBtoggle	iface.c	304;"	function	signature:( void )
-RGBtoggle	iface.h	54;"	prototype	signature:( void )
+RGBtoggle	iface.c	345;"	function	signature:( void )
+RGBtoggle	iface.h	58;"	prototype	signature:( void )
 RIEN	stm8_headers\include\stm8s003f3.h	4309;"	member	struct:__anon381::__anon392::__anon393
 RL	stm8_headers\include\stm8s003f3.h	2450;"	member	struct:__anon209::__anon214::__anon215
 RLR	stm8_headers\include\stm8s003f3.h	2456;"	member	struct:__anon209	typeref:union:__anon209::__anon214
@@ -1167,8 +1167,12 @@ __STRING__	c:\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\string.h	6;"
 _stext	stm8_interrupt_vector.c	20;"	prototype	file:
 _vectab	stm8_interrupt_vector.c	28;"	variable
 antipoisoningAtNihgtOnly	eeprom.h	39;"	member	struct:__anon3
-bcd_to_decimal	iface.c	273;"	function	signature:(uint8_t bcd)
-bcd_to_decimal	iface.h	50;"	prototype	signature:(uint8_t bcd)
+antipoisoningCurrentDigit	iface.h	46;"	member	struct:__anon4
+antipoisoningEffect	eeprom.h	41;"	member	struct:__anon3
+antipoisoningEn	iface.h	44;"	member	struct:__anon4
+antipoisoningOldDigit	iface.h	45;"	member	struct:__anon4
+bcd_to_decimal	iface.c	314;"	function	signature:(uint8_t bcd)
+bcd_to_decimal	iface.h	54;"	prototype	signature:(uint8_t bcd)
 bf	keyevents.h	18;"	member	struct:__anon2
 bin	macro.h	9;"	macro
 bitchk	macro.h	29;"	macro
@@ -1388,39 +1392,38 @@ byte	stm8_headers\include\stm8s003f3.h	922;"	member	union:__anon5::__anon74
 byte	stm8_headers\include\stm8s003f3.h	941;"	member	union:__anon5::__anon76
 byte	stm8_headers\include\stm8s003f3.h	977;"	member	union:__anon78::__anon79
 byte	stm8_headers\include\stm8s003f3.h	998;"	member	union:__anon78::__anon81
+counter150ms	iface.h	43;"	member	struct:__anon4
 counter1s	iface.h	40;"	member	struct:__anon4
-decimal_to_bcd	iface.c	278;"	function	signature:(uint8_t decimal)
-decimal_to_bcd	iface.h	51;"	prototype	signature:(uint8_t decimal)
+decimal_to_bcd	iface.c	319;"	function	signature:(uint8_t decimal)
+decimal_to_bcd	iface.h	55;"	prototype	signature:(uint8_t decimal)
 disp_data	display.c	10;"	variable	file:
 disp_data_bright_set	display.c	11;"	variable	file:
 display	iface.h	31;"	member	struct:__anon4
 displayBright	display.c	15;"	variable	file:
-displayBset	display.c	374;"	function	signature:(uint8_t value)
-displayBset	display.h	27;"	prototype	signature:(uint8_t value)
-displayDot	display.c	264;"	function	signature:(uint8_t state)
-displayDot	display.h	20;"	prototype	signature:(uint8_t state)
-displayDotPulse	display.c	281;"	function	signature:(void)
-displayDotPulse	display.h	21;"	prototype	signature:(void)
-displayDotPulseProc	display.c	286;"	function	signature:(void)
-displayDotPulseProc	display.h	22;"	prototype	signature:(void)
-displayGset	display.c	369;"	function	signature:(uint8_t value)
-displayGset	display.h	26;"	prototype	signature:(uint8_t value)
-displayInit	display.c	21;"	function	signature:( void )
+displayBset	display.c	498;"	function	signature:(uint8_t value)
+displayBset	display.h	26;"	prototype	signature:(uint8_t value)
+displayDot	display.c	394;"	function	signature:(uint8_t state)
+displayDot	display.h	19;"	prototype	signature:(uint8_t state)
+displayDotPulse	display.c	411;"	function	signature:(void)
+displayDotPulse	display.h	20;"	prototype	signature:(void)
+displayDotPulseProc	display.c	416;"	function	signature:(void)
+displayDotPulseProc	display.h	21;"	prototype	signature:(void)
+displayGset	display.c	493;"	function	signature:(uint8_t value)
+displayGset	display.h	25;"	prototype	signature:(uint8_t value)
+displayInit	display.c	20;"	function	signature:( void )
 displayInit	display.h	16;"	prototype	signature:( void )
-displayNixie	display.c	247;"	function	signature:(uint8_t *data)
-displayNixie	display.h	18;"	prototype	signature:(uint8_t *data)
-displayNixieBrightSet	display.c	253;"	function	signature:(uint8_t *data)
-displayNixieBrightSet	display.h	19;"	prototype	signature:(uint8_t *data)
-displayNixieBuffPrepare	display.c	18;"	prototype	file:	signature:(uint8_t *inbuff)
-displayNixieBuffPrepare	display.c	61;"	function	file:	signature:(uint8_t *inbuff)
-displayRGBset	display.c	350;"	function	signature:(uint8_t state)
-displayRGBset	display.h	24;"	prototype	signature:(uint8_t state)
-displayRset	display.c	364;"	function	signature:(uint8_t value)
-displayRset	display.h	25;"	prototype	signature:(uint8_t value)
-displaySetBright	display.c	229;"	function	signature:(uint8_t bright)
+displayNixie	display.c	388;"	function	signature:(uint8_t *data, uint8_t full_bright_bitmask)
+displayNixie	display.h	18;"	prototype	signature:(uint8_t *data, uint8_t full_bright_bitmask)
+displayNixieBuffPrepare	display.c	17;"	prototype	file:	signature:(uint8_t *inbuff, uint8_t dmask)
+displayNixieBuffPrepare	display.c	61;"	function	file:	signature:(uint8_t *inbuff, uint8_t dmask)
+displayRGBset	display.c	475;"	function	signature:(uint8_t state)
+displayRGBset	display.h	23;"	prototype	signature:(uint8_t state)
+displayRset	display.c	488;"	function	signature:(uint8_t value)
+displayRset	display.h	24;"	prototype	signature:(uint8_t value)
+displaySetBright	display.c	371;"	function	signature:(uint8_t bright)
 displaySetBright	display.h	17;"	prototype	signature:(uint8_t bright)
-displaySetDotBright	display.c	19;"	prototype	file:	signature:( uint8_t bright)
-displaySetDotBright	display.c	298;"	function	file:	signature:( uint8_t bright)
+displaySetDotBright	display.c	18;"	prototype	file:	signature:( uint8_t bright)
+displaySetDotBright	display.c	428;"	function	file:	signature:( uint8_t bright)
 display_state	iface.h	33;"	member	struct:__anon4
 dotPulseCounter	display.c	13;"	variable	file:
 ds3231Init	ds3231.c	5;"	function	signature:(void)
@@ -1436,15 +1439,14 @@ eeprom_adreses	eeprom.h	8;"	enum
 event_single_key1	keyevents.c	105;"	function	signature:(void)
 event_single_key1	keyevents.c	16;"	prototype	file:	signature:(void)
 event_single_key2	keyevents.c	17;"	prototype	file:	signature:(void)
-event_single_key2	keyevents.c	191;"	function	signature:(void)
+event_single_key2	keyevents.c	199;"	function	signature:(void)
 f1224	eeprom.h	30;"	member	struct:__anon3
 fastReleaseKey2	keyevents.c	21;"	prototype	file:	signature:(void)
-fastReleaseKey2	keyevents.c	369;"	function	signature:(void)
+fastReleaseKey2	keyevents.c	376;"	function	signature:(void)
 flag05s	iface.h	41;"	member	struct:__anon4
 flag100ms	iface.h	42;"	member	struct:__anon4
 flag10ms	display.c	14;"	variable
 flag10ms	iface.h	32;"	member	struct:__anon4
-flagBrightSet	display.c	16;"	variable	file:
 hc595ChainShiftOut	hc595.c	70;"	function	signature:(uint8_t *data, uint8_t length)
 hc595ChainShiftOut	hc595.h	10;"	prototype	signature:(uint8_t *data, uint8_t lenght)
 hc595Init	hc595.c	10;"	function	signature:(void)
@@ -1467,22 +1469,22 @@ i2c_start	i2c.c	154;"	function	signature:(void)
 i2c_start	i2c.h	23;"	prototype	signature:(void)
 i2c_stop	i2c.c	214;"	function	signature:(void)
 i2c_stop	i2c.h	24;"	prototype	signature:(void)
-iface_10ms_proc_en	iface.c	104;"	function	signature:(void)
-iface_10ms_proc_en	iface.h	48;"	prototype	signature:(void)
-iface_disp2bcdDigit	iface.c	15;"	prototype	file:	signature:(uint8_t value, uint8_t *d0, uint8_t *d1)
-iface_disp2bcdDigit	iface.c	266;"	function	file:	signature:(uint8_t value, uint8_t *d0, uint8_t *d1)
-iface_disp2decDigit	iface.c	14;"	prototype	file:	signature:(uint8_t value, uint8_t *d0, uint8_t *d1)
-iface_disp2decDigit	iface.c	251;"	function	file:	signature:(uint8_t value, uint8_t *d0, uint8_t *d1)
-iface_disp3decDigit	iface.c	16;"	prototype	file:	signature:(uint16_t value, uint8_t *d0, uint8_t *d1, uint8_t *d2)
-iface_disp3decDigit	iface.c	258;"	function	file:	signature:(uint16_t value, uint8_t *d0, uint8_t *d1, uint8_t *d2)
-iface_display	iface.c	122;"	function	file:	signature:(void)
-iface_display	iface.c	13;"	prototype	file:	signature:(void)
-iface_flag05sReset	iface.c	98;"	function	signature:(void)
-iface_flag05sReset	iface.h	49;"	prototype	signature:(void)
-iface_init	iface.c	18;"	function	signature:( void )
-iface_init	iface.h	46;"	prototype	signature:( void )
-iface_proc	iface.c	29;"	function	signature:( void )
-iface_proc	iface.h	47;"	prototype	signature:( void )
+iface_10ms_proc_en	iface.c	112;"	function	signature:(void)
+iface_10ms_proc_en	iface.h	52;"	prototype	signature:(void)
+iface_disp2bcdDigit	iface.c	16;"	prototype	file:	signature:(uint8_t value, uint8_t *d0, uint8_t *d1)
+iface_disp2bcdDigit	iface.c	307;"	function	file:	signature:(uint8_t value, uint8_t *d0, uint8_t *d1)
+iface_disp2decDigit	iface.c	15;"	prototype	file:	signature:(uint8_t value, uint8_t *d0, uint8_t *d1)
+iface_disp2decDigit	iface.c	292;"	function	file:	signature:(uint8_t value, uint8_t *d0, uint8_t *d1)
+iface_disp3decDigit	iface.c	17;"	prototype	file:	signature:(uint16_t value, uint8_t *d0, uint8_t *d1, uint8_t *d2)
+iface_disp3decDigit	iface.c	299;"	function	file:	signature:(uint16_t value, uint8_t *d0, uint8_t *d1, uint8_t *d2)
+iface_display	iface.c	148;"	function	file:	signature:(void)
+iface_display	iface.c	14;"	prototype	file:	signature:(void)
+iface_flag05sReset	iface.c	106;"	function	signature:(void)
+iface_flag05sReset	iface.h	53;"	prototype	signature:(void)
+iface_init	iface.c	19;"	function	signature:( void )
+iface_init	iface.h	50;"	prototype	signature:( void )
+iface_proc	iface.c	30;"	function	signature:( void )
+iface_proc	iface.h	51;"	prototype	signature:( void )
 insert_button	keyboard.c	55;"	function	file:	signature:(uint8_t b )
 insert_button	keyboard.c	9;"	prototype	file:	signature:(uint8_t b)
 int16_t	c:\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	11;"	typedef
@@ -1500,8 +1502,8 @@ interrupt_instruction	stm8_interrupt_vector.c	8;"	member	struct:interrupt_vector
 interrupt_vector	stm8_interrupt_vector.c	7;"	struct	file:
 intmax_t	c:\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	42;"	typedef
 intptr_t	c:\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	37;"	typedef
-is_time_in_interval	iface.c	288;"	function	signature:(uint16_t current_minutes, uint16_t start_minutes, uint16_t end_minutes)
-is_time_in_interval	iface.h	53;"	prototype	signature:(uint16_t current_minutes, uint16_t start_minutes, uint16_t end_minutes)
+is_time_in_interval	iface.c	329;"	function	signature:(uint16_t current_minutes, uint16_t start_minutes, uint16_t end_minutes)
+is_time_in_interval	iface.h	57;"	prototype	signature:(uint16_t current_minutes, uint16_t start_minutes, uint16_t end_minutes)
 kbd	keyboard.c	8;"	variable
 keyboard_get_key	keyboard.c	46;"	function	signature:(void)
 keyboard_get_key	keyboard.h	26;"	prototype	signature:(void)
@@ -1520,13 +1522,13 @@ ki	keyevents.c	24;"	variable
 kr_counter	keyevents.h	20;"	member	struct:__anon2
 lobyte	macro.h	35;"	macro
 longpress_key1	keyevents.c	18;"	prototype	file:	signature:(void)
-longpress_key1	keyevents.c	309;"	function	signature:(void)
+longpress_key1	keyevents.c	317;"	function	signature:(void)
 longpress_key1_2	keyevents.c	20;"	prototype	file:	signature:(void)
-longpress_key1_2	keyevents.c	356;"	function	signature:(void)
+longpress_key1_2	keyevents.c	363;"	function	signature:(void)
 longpress_key2	keyevents.c	19;"	prototype	file:	signature:(void)
-longpress_key2	keyevents.c	337;"	function	signature:(void)
+longpress_key2	keyevents.c	345;"	function	signature:(void)
 lp_counter	keyevents.h	19;"	member	struct:__anon2
-main	main.c	20;"	function	signature:(void)
+main	main.c	18;"	function	signature:(void)
 map	macro.h	40;"	macro
 memchr	c:\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\string.h	34;"	prototype	signature:(void *s, char c, unsigned int n)
 memcmp	c:\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\string.h	28;"	prototype	signature:(void *s1, void *s2, unsigned int n)
@@ -1803,11 +1805,13 @@ strrchr	c:\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\string.h	26;"	p
 strspn	c:\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\string.h	33;"	prototype	signature:(char *s1, char *s2)
 strstr	c:\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\string.h	27;"	prototype	signature:(char *s1, char *s2)
 timeSetupCounter	iface.h	30;"	member	struct:__anon4
-time_to_minutes	iface.c	283;"	function	signature:(uint8_t hours, uint8_t minutes)
-time_to_minutes	iface.h	52;"	prototype	signature:(uint8_t hour, uint8_t minute)
+time_to_minutes	iface.c	324;"	function	signature:(uint8_t hours, uint8_t minutes)
+time_to_minutes	iface.h	56;"	prototype	signature:(uint8_t hour, uint8_t minute)
+timer150msProc	iface.c	130;"	function	file:	signature:(void)
+timer150msProc	iface.c	13;"	prototype	file:	signature:(void)
 timer20msProc	service_timing.c	13;"	prototype	file:	signature:(void)
 timer20msProc	service_timing.c	55;"	function	file:	signature:(void)
-timer50msProc	iface.c	109;"	function	file:	signature:(void)
+timer50msProc	iface.c	117;"	function	file:	signature:(void)
 timer50msProc	iface.c	12;"	prototype	file:	signature:(void)
 uint16_t	c:\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	14;"	typedef
 uint32_t	c:\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdint.h	15;"	typedef

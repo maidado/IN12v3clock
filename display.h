@@ -15,8 +15,7 @@ extern "C" {
 
 void displayInit ( void );
 void displaySetBright(uint8_t bright);
-void displayNixie(uint8_t *data);
-void displayNixieBrightSet(uint8_t *data);
+void displayNixie(uint8_t *data, uint8_t full_bright_bitmask);
 void displayDot (uint8_t state);
 void displayDotPulse (void);
 void displayDotPulseProc (void);
