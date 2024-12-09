@@ -281,7 +281,7 @@
  310  0149 204d          	jra	L77
  311  014b               L16:
  312                     ; 141 		case	SETUP_F1224:
- 312                     ; 142 			i.setupValue = 0;	//disable, 12h time display is not working yet!
+ 312                     ; 142 			i.setupValue = 0;	//todo disable, 12h time display is not working yet!
  313  014b 3f0b          	clr	_i+11
  314                     ; 143 			break;
  315  014d 2049          	jra	L77
@@ -462,7 +462,7 @@
  487  0210 ae000d        	ldw	x,#13
  488  0213 cd0000        	call	_EEPROM_writeByte
  490  0216 84            	pop	a
- 491                     ; 220 			bitmaskclr(ki.bf,S2_M);	//disable fast release key2
+ 491                     ; 220 			bitmaskclr(ki.bf,S2_M);	//disable fast release key2 to prevent toggle RGB
  492  0217 72130001      	bres	_ki+1,#1
  493                     ; 221 			break;
  494  021b ac170317      	jpf	L702
@@ -636,7 +636,7 @@
  665  0308 84            	pop	a
  666                     ; 299 			i.display_state = SETUP_NO;
  667  0309 35ff0007      	mov	_i+7,#255
- 668                     ; 300 			bitmaskclr(ki.bf,S2_M);	//disable fast release key2
+ 668                     ; 300 			bitmaskclr(ki.bf,S2_M);	//disable fast release key2 to prevent toggle RGB
  669  030d 72130001      	bres	_ki+1,#1
  670                     ; 301 			break;
  671  0311 2004          	jra	L702

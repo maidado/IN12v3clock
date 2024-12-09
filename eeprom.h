@@ -38,6 +38,7 @@ typedef struct {
 	uint8_t		rgbAtNightEn;
 	uint8_t		antipoisoningAtNihgtOnly;
 	uint8_t 	rgbGlobalEn;
+	uint8_t		antipoisoningEffect;
 }Edata;
 
 extern Edata e;

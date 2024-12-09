@@ -91,6 +91,12 @@ void EEPROM_dataInit(void)
 		e.antipoisoningAtNihgtOnly = 0;
 		EEPROM_writeByte(ANTIPOISONING_AT_NIGHT_ONLY_ADDR,e.antipoisoningAtNihgtOnly);
 	}
+	
+	e.antipoisoningEffect = EEPROM_readByte(ANTIPOISONING_EFFECT_ADDR);
+	if (e.antipoisoningEffect!= 1) {
+		e.antipoisoningEffect = 1;	// todo temporally it's only 1
+		EEPROM_writeByte(ANTIPOISONING_EFFECT_ADDR, e.antipoisoningEffect);
+	}
 }
 
 /**

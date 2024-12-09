@@ -6,8 +6,8 @@
 #include "eeprom.h"
 #include <string.h>
 
-static 					uint8_t zero_data[5] 	= {0,0,0,0,0};
-static volatile uint8_t disp_data[5] 	= {0,0,0,0,0};
+static 					uint8_t zero_data[5] 							= {0,0,0,0,0};
+static volatile uint8_t disp_data[5]							= {0,0,0,0,0};
 static volatile uint8_t disp_data_bright_set[5] 	= {0,0,0,0,0};
 
 static 					uint8_t dotPulseCounter;
@@ -57,25 +57,10 @@ void displayInit ( void )
 	displayRGBset(e.rgbGlobalEn);
 }
 
-
+//inbuff -> {minutes,tens of minutes,hours,tens of hours}
 static uint8_t *displayNixieBuffPrepare(uint8_t *inbuff)
 {
-//inbuff -> {minutes,tens of minutes,hours,tens of hours}
 	uint8_t data[5] = {0,0,0,0,0};
-	uint8_t i,o,t;
-//не придумал как заставить работать для 6 цифр 
-//да и компилируется в слишком длинный код, без смысла.
-//	for (i = 0, o = 4; i < 4; i++, o--){
-//	    if (*inbuff < 10){
-//	        t = *inbuff+i*2;
-//   		if (t < 8){
-//    			bitset(data[o],t);
-//    		}else{
-//    		    bitset(data[o-1],t-8);
-//    		}
-//	    }
-//		inbuff++;
-//	}
 	
 	// minutes
 	switch(inbuff[0]){
@@ -229,8 +214,7 @@ static uint8_t *displayNixieBuffPrepare(uint8_t *inbuff)
 void displaySetBright(uint8_t bright)
 {
 	if (bright == 0){
-		//здесь должден быть memset
-		memcpy(disp_data,zero_data,sizeof(disp_data));
+		memset(disp_data,0,sizeof(disp_data));
 	}else{
 		displayBright = scale(bright,100,10000);
 		if (displayBright < NIXIE_MIN_BRIGHT){
@@ -346,11 +330,9 @@ ISR_HANDLER (TIM2_CAP_ISR, _TIM2_CAPCOM_CC1IF_VECTOR_)
 } // TIM2_CAP_ISR
 
 
-// todo здесь должна быть какая то зацепка на глобальный флаг разрешения RGB
 void displayRGBset (uint8_t state)
 {
 	if (state){
-		//load from eeprom
 		RGBsetR((uint16_t)scale(EEPROM_readByte(R_ADDR),255,displayBright));
 		RGBsetG((uint16_t)scale(EEPROM_readByte(G_ADDR),255,displayBright));
 		RGBsetB((uint16_t)scale(EEPROM_readByte(B_ADDR),255,displayBright));

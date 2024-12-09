@@ -8,9 +8,9 @@
 #include "eeprom.h"
 
 /*
-longpress_keyX		-	в keyivents_counters
-fastrelease_keyX 	-	в обработке отпускания кнопки
-ivent_single_keyX - то что делает кнопка в longpress or fastrelease
+longpress_keyX		-	in keyivents_counters
+fastrelease_keyX 	-	in processing of button release
+ivent_single_keyX - this is what the button does in longpress or fastrelease
 */
 
 void event_single_key1(void);
@@ -80,7 +80,7 @@ void keyevents_counters ( void )
 {
 	uint8_t t;
 	
-	//счётчики считают время нажатой кнопки, тик 1/10с. 
+	//The counters count the time the button is pressed, tick 1/10s.
 	for(t=0; t<sizeof(ki.lp_counter); t++){
 		if (bitchk(ki.bf,t)){
 			if (ki.lp_counter[t]<255) ki.lp_counter[t]++;
@@ -139,7 +139,7 @@ void event_single_key1(void)
 			break;
 			
 		case	SETUP_F1224:
-			i.setupValue = 0;	//disable, 12h time display is not working yet!
+			i.setupValue = 0;	//todo disable, 12h time display is not working yet!
 			break;
 			
 		case	SETUP_ZERO:
@@ -217,7 +217,7 @@ void event_single_key2(void)
 		case SETUP_B:
 			i.display_state = SETUP_NO;
 			EEPROM_writeByte(B_ADDR,i.setupValue);
-			bitmaskclr(ki.bf,S2_M);	//disable fast release key2
+			bitmaskclr(ki.bf,S2_M);	//disable fast release key2 to prevent toggle RGB
 			break;
 		
 		case SETUP_ZERO:
@@ -297,7 +297,7 @@ void event_single_key2(void)
 			e.antipoisoningAtNihgtOnly = i.setupValue;
 			EEPROM_writeByte(ANTIPOISONING_AT_NIGHT_ONLY_ADDR,e.antipoisoningAtNihgtOnly);
 			i.display_state = SETUP_NO;
-			bitmaskclr(ki.bf,S2_M);	//disable fast release key2
+			bitmaskclr(ki.bf,S2_M);	//disable fast release key2 to prevent toggle RGB
 			break;
 
 		default:
