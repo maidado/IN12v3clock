@@ -6,6 +6,7 @@
 #include "keyboard.h"
 #include "iface.h"
 #include "eeprom.h"
+#include "iwdg.h"
 
 /* 
  UP BUTTON   - change effects
@@ -27,12 +28,14 @@ int main(void) {
 	keyboard_init();
 	iface_init();
 	service_timing_init();
-
+	iwdg_init(0xFF);	//1.02s period
+	iwdg_service();
   ENABLE_INTERRUPTS(); 
 
 	
 	while (1) {
 		service_timing_10ms_proc();
 		iface_proc(); 
+		iwdg_service();
 	}
 }

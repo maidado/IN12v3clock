@@ -6,7 +6,7 @@
 #include "eeprom.h"
 #include <string.h>
 
-static 					uint8_t zero_data[5] 							= {0,0,0,0,0};
+static volatile	uint8_t zero_data[5] 							= {0,0,0,0,0};
 static volatile uint8_t disp_data[5]							= {0,0,0,0,0};
 static 					uint8_t dotPulseCounter;
 			 volatile uint8_t flag10ms;
@@ -58,7 +58,9 @@ void displayInit ( void )
 //dmask  -> bitmask of digits that have been prepared
 static uint8_t *displayNixieBuffPrepare(uint8_t *inbuff, uint8_t dmask)
 {
-	uint8_t data[5] = {0,0,0,0,0};
+	static uint8_t data[5];
+	
+	memset(data,0,sizeof(data));
 	
 	if (bitchk(dmask,0)){
 		// minutes

@@ -19,6 +19,7 @@ void longpress_key1(void);
 void longpress_key2(void);
 void longpress_key1_2(void);
 void fastReleaseKey2(void);
+void fastReleaseKey1(void);
 
 
 Keyivents ki;
@@ -41,7 +42,9 @@ void keyevents_proc ( void )
 		{
 			bitmaskset(ki.bf,S1_M);
 			if (ki.bf == S1_M){
-				event_single_key1();
+				if (i.display_state != SETUP_NO){ 
+					event_single_key1();
+				}
 			}
 		}
 		//---------------------------------------------------------------------------------------------------------------
@@ -60,6 +63,7 @@ void keyevents_proc ( void )
 		if (ki.keys_mirror == S1_UP)
 		{
 			if (bitchk(ki.bf,S1)){
+				fastReleaseKey1();
 				bitmaskclr(ki.bf,S1_M);
 			}
 		}
@@ -106,12 +110,9 @@ void event_single_key1(void)
 {
 	switch(i.display_state){
 		case SETUP_NO:
-				i.antipoisoningCurrentDigit = i.minutes&0x0F;
-				if (--i.antipoisoningCurrentDigit  == 0xFF){
-					i.antipoisoningCurrentDigit = 9;
+				if (!i.antipoisoningEn) {
+					iface_start_antipoisoning();
 				}
-				i.antipoisoningEn = 1; 
-				i.counter150ms = 0;
 			break;
 		case SETUP_HOURS:
 			iface_flag05sReset();
@@ -153,6 +154,7 @@ void event_single_key1(void)
 		case	SETUP_ZERO:
 		case  SETUP_NIGHT_BR_EN:
 		case	SETUP_NIGHT_RGB_EN:
+		case  SETUP_ANTIPOISONING_AT_NIGHT_ONLY:
 			if (i.setupValue){
 				i.setupValue = 0;
 			}else{
@@ -208,6 +210,7 @@ void event_single_key2(void)
 		case SETUP_MINUTES:
 			ds3231_write_time(&seconds,&i.minutesSetupValue,&i.hoursSetupValue);
 			i.display_state = SETUP_NO;
+			bitmaskclr(ki.bf,S2_M);	//disable fast release key2 to prevent toggle RGB
 			break;
 		
 		case SETUP_R:
@@ -373,6 +376,16 @@ void longpress_key1_2(void){
 	}
 }
 
+void fastReleaseKey1(void)
+{
+	if (ki.bf == S1_M){
+		if (ki.lp_counter[S1] < 1*10){
+			if (i.display_state == SETUP_NO){
+				event_single_key1();
+			}
+		}
+	}
+}
 
 void fastReleaseKey2(void)
 {

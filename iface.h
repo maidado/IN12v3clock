@@ -40,7 +40,12 @@ typedef struct
 	uint8_t 	counter1s;
 	uint8_t		flag05s;
 	uint8_t		flag100ms;
-	uint8_t		counter150ms;
+	uint8_t		minutesOld;
+	uint8_t		hoursOld;
+	uint8_t		apOld[4];
+	uint8_t		apNew[4];
+	uint8_t		apFlagEn[4];
+	uint8_t		counterAp100ms;
 	uint8_t 	antipoisoningEn;
 	uint8_t 	antipoisoningOldDigit;
 	uint8_t 	antipoisoningCurrentDigit;
@@ -55,6 +60,7 @@ uint8_t bcd_to_decimal(uint8_t bcd);
 uint8_t decimal_to_bcd(uint8_t decimal);
 uint16_t time_to_minutes(uint8_t hour, uint8_t minute);
 uint8_t is_time_in_interval(uint16_t current_minutes, uint16_t start_minutes, uint16_t end_minutes);
+void iface_start_antipoisoning(void);
 void RGBtoggle ( void );
 
 #ifdef	__cplusplus

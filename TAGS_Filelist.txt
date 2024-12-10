@@ -1,3 +1,4 @@
+iwdg.c
 keyboard.c
 keyevents.c
 eeprom.c
@@ -10,6 +11,7 @@ main.c
 rgb.c
 service_timing.c
 stm8_interrupt_vector.c
+iwdg.h
 keyboard.h
 keyevents.h
 eeprom.h
