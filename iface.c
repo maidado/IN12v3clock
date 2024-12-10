@@ -22,10 +22,6 @@ static uint8_t antipoisoning_dig(uint8_t dig);
 void iface_init( void )
 {
 	i.display_state = SETUP_NO;
-	i.seconds = 0x50;
-	i.minutes = 0x42;
-	i.hours = 0x01;
-	ds3231_write_time(&i.seconds,&i.minutes,&i.hours);
 	ds3231_read_time(&i.seconds,&i.minutes,&i.hours);
 	i.hoursOld = i.hours;
 	i.minutesOld = i.minutes;
