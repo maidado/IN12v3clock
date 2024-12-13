@@ -8,10 +8,10 @@ Alternate firmware for the GeekStyles IN12 V3 Nixie nixieclock PCB.
 
 ## Description
 This firmware is designed for the IN12 V3 clock PCB, 
-with frontside inscription: **NixieClock IN12 V3**  
-[![Frontside Preview](Photo/pcb_back_preview.JPG)](Photo/pcb_back_fullsize.JPG)
+with frontside inscription: **GeekStyles IN12 V3**  
+[![Frontside Preview](Photo/pcb_front_preview.JPG)](Photo/pcb_front_fullsize.JPG)
 and the backside inscription: **JM NixieClock IN12 V4.2 20190514**.   
-[![Backside Preview](Photo/pcb_front_preview.JPG)](Photo/pcb_front_fullsize.JPG)
+[![Backside Preview](Photo/pcb_back_preview.JPG)](Photo/pcb_back_fullsize.JPG)
 The STM8S003F3P6 microcontroller features 8 KB of Flash memory, 1 KB of RAM, and 128 bytes of EEPROM.
 
 ---
