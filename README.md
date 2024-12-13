@@ -142,14 +142,87 @@ Q7 -> 2003A U14 I5, O5-> N1 9
 
 ---
 
-### Control by buttons
-1.
-2.
-3.
-4.
-5.
-6.
+# **Clock Control and Setup Guide**
 
+<details>
+<summary>Show Full Instruction</summary>
+
+## **Key Definitions:**
+- **K1** — Upper button.
+- **K2** — Lower button.
+
+---
+
+## **Basic Control:**
+1. **Single press of K1** — Executes the cathode poisoning prevention algorithm.
+2. **Single press of K2** — Toggles the RGB lamp backlight.  
+   - In night mode, toggles the backlight for night operation.
+3. **Hold K1 (> 2 seconds)** — Activates time setup mode.
+4. **Hold K2 (> 2 seconds)** — Activates backlight color adjustment mode.
+5. **Hold K1 and K2 simultaneously (> 2 seconds)** — Activates the settings menu.
+
+---
+
+## **Time Setup Mode:**
+1. **Entering the mode:** Hold K1 for more than 2 seconds.
+2. **Hour adjustment:**
+   - The hour digits start blinking.
+   - **K1:** Increases the hour value by 1.
+     - Holding K1 (> 0.8 seconds): Continuously increases the hour value.
+   - **K2:** Switches to minute adjustment.
+3. **Minute adjustment:**
+   - The minute digits start blinking.
+   - **K1:** Increases the minute value by 1.
+     - Holding K1 (> 0.8 seconds): Continuously increases the minute value.
+   - **K2:** Saves the time (seconds reset to zero) and exits the setup mode.
+
+---
+
+## **Backlight Color Adjustment Mode:**
+1. **Entering the mode:** Hold K2 for more than 2 seconds.
+2. **Adjustment sequence:**
+   - **Red (digit "1" blinks).**
+   - **Green (digit "2" blinks).**
+   - **Blue (digit "3" blinks).**
+3. **Brightness adjustment:**
+   - **K1:** Increases brightness by 1 (range: 0–255).
+     - Holding K1 (> 0.8 seconds): Continuously increases brightness.
+   - **K2:** Saves the current value and proceeds to the next color.
+4. **Exiting the mode:** After adjusting blue brightness, the mode exits automatically.
+
+---
+
+## **Settings Menu:**
+1. **Entering the menu:** Hold K1 and K2 simultaneously for more than 2 seconds.
+2. **Display behavior:**
+   - **Tens of hours digit:** Displays the menu item number.
+   - **Other digits:** Show the parameter value.
+3. **Control:**
+   - **K1:** Adjusts the parameter value.
+   - **K2:** Saves the parameter and moves to the next menu item.
+4. **Menu items:**
+   0. **Leading zero display:**  
+      - 0 — Disabled, 1 — Enabled.
+   1. **Time format:**  
+      - 0 — 24-hour, 1 — 12-hour.
+   2. **Normal mode indicator brightness:**  
+      - 5%–100%.
+   3. **Night mode indicator brightness:**  
+      - 5%–100%.
+   4. **Night brightness enable:**  
+      - 0 — Disabled, 1 — Enabled.
+   5. **Night interval start hour.**
+   6. **Night interval start minute.**
+   7. **Night interval end hour.**
+   8. **Night interval end minute.**
+   9. **RGB backlight in night mode:**  
+      - 0 — Disabled, 1 — Enabled.
+   10. **Cathode poisoning prevention in night mode:**  
+       - 0 — Every 6 minutes during normal operation, 1 — Every 2 minutes (only at night).
+
+5. **Exiting the menu:** After the last menu item, the clock returns to normal time display mode.
+
+</details>
 
 ---
 
