@@ -155,8 +155,3 @@ Q7 -> 2003A U14 I5, O5-> N1 9
 
 ## License
 This project is distributed under the **MIT License**.
-
----
-
-## Acknowledgments
-- [STM8_headers](https://github.com/gicking/STM8_headers): Header files for STM8 microcontrollers.
