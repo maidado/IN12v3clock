@@ -200,42 +200,42 @@ Q7 -> 2003A U14 I5, O5-> N1 9
 3. **Control:**
    - **K1:** Adjusts the parameter value.
    - **K2:** Saves the parameter and moves to the next menu item.
-4. ## Menu Items:
+4. ## Menu Items:  
 
-1. **Leading zero display:**  
+**0.** Leading zero display:  
    - `0` — Disabled  
    - `1` — Enabled  
 
-2. **Time format:**  
+**1.** Time format:  
    - `0` — 24-hour  
    - `1` — 12-hour  
 
-3. **Normal mode indicator brightness:**  
+**2.** Normal mode indicator brightness:  
    - `5%–100%`  
 
-4. **Night mode indicator brightness:**  
+**3.** Night mode indicator brightness:  
    - `5%–100%`  
 
-5. **Night brightness enable:**  
+**4.** Night brightness enable:  
    - `0` — Disabled  
    - `1` — Enabled  
 
-6. **Night interval start hour.**
+**5.** Night interval start hour.  
 
-7. **Night interval start minute.**
+**6.** Night interval start minute.  
 
-8. **Night interval end hour.**
+**7.** Night interval end hour.  
 
-9. **Night interval end minute.**
+**8.** Night interval end minute.  
 
-10. **RGB backlight in night mode:**  
+**9.** RGB backlight in night mode:  
     - `0` — Disabled  
     - `1` — Enabled  
 
-11. **Cathode poisoning prevention in night mode:**  
+**10.** Cathode poisoning prevention in night mode:  
     - `0` — Every 6 minutes during normal operation  
     - `1` — Every 2 minutes (only at night)  
-
+    
 5. **Exiting the menu:** After the last menu item, the clock returns to normal time display mode.
 
 </details>
