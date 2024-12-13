@@ -203,12 +203,12 @@ Q7 -> 2003A U14 I5, O5-> N1 9
 4. ## Menu Items:  
 
     **0.** Leading zero display:  
-       - `0` — Disabled  
-       - `1` — Enabled  
+         `0` — Disabled  
+         `1` — Enabled  
 
     **1.** Time format:  
-       - `0` — 24-hour  
-       - `1` — 12-hour  
+        `0` — 24-hour  
+        `1` — 12-hour  
 
     **2.** Normal mode indicator brightness:  
        - `5%–100%`  
