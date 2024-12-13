@@ -200,7 +200,7 @@ Q7 -> 2003A U14 I5, O5-> N1 9
 3. **Control:**
    - **K1:** Adjusts the parameter value.
    - **K2:** Saves the parameter and moves to the next menu item.
-4. **Menu items:**
+4. **Menu items:**  
    0. **Leading zero display:**  
       - 0 — Disabled, 1 — Enabled.
    1. **Time format:**  
