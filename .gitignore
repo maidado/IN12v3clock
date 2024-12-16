@@ -2,3 +2,4 @@
 !/Release/*.s19
 /Debug/*
 !/Debug/*.s19
+/.idea
