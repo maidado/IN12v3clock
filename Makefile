@@ -3,17 +3,18 @@
 # Outputs are created in the './SDCC' directory.
 #######################
 
-
 # Compiler and Flags
 CC               = sdcc
 LD               = sdcc
-OPTIMIZE         =
+OPTIMIZE         = --opt-code-speed
+#OPTIMIZE         = --opt-code-size
 CFLAGS           = -mstm8 --std-sdcc99 --std-c99 $(OPTIMIZE)
 LFLAGS           = -mstm8 -lstm8 --out-fmt-ihx
 
 # Directories and Targets
 OUTPUT_DIR       = SDCC
-TARGET           = $(OUTPUT_DIR)/main.ihx
+IHX_TARGET       = $(OUTPUT_DIR)/main.ihx
+TARGET           = $(OUTPUT_DIR)/main.s19
 
 PRJ_SRC_DIR      = .
 PRJ_INC_DIR      = STM8_headers/include
@@ -33,7 +34,7 @@ vpath %.h $(PRJ_INC_DIR)
 
 # Rules
 .PHONY: clean all default flash swim serial
-.PRECIOUS: $(TARGET) $(OBJECTS)
+.PRECIOUS: $(IHX_TARGET) $(TARGET) $(OBJECTS)
 
 default: $(OUTPUT_DIR) $(TARGET)
 
@@ -44,13 +45,16 @@ $(OUTPUT_DIR):
 	@mkdir -p $(OUTPUT_DIR)
 
 # Link target
-$(TARGET): $(OBJECTS)
-	@echo "Linking: $(OBJECTS) -> $(TARGET)"
+$(IHX_TARGET): $(OBJECTS)
+	@echo "Linking: $(OBJECTS) -> $(IHX_TARGET)"
 	$(LD) $(LFLAGS) -o $@ $(OBJECTS)
 
+# Convert IHX to S19
+$(TARGET): $(IHX_TARGET)
+	@echo "Converting: $(IHX_TARGET) -> $(TARGET)"
+	objcopy -I ihex -O srec $< $@
+
 # Compile objects
-
-
 $(OBJECTS): $(SOURCE) $(HEADER)
 $(OUTPUT_DIR)/%.rel: %.c
 	@echo "Compiling: $< -> $@"
@@ -60,7 +64,6 @@ $(OUTPUT_DIR)/%.rel: %.c
 clean:
 	@echo "Cleaning up build files..."
 	@rm -rf $(OUTPUT_DIR)/*
-
 
 # Upload via STM8 bootloader
 serial:

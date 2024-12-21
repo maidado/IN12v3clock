@@ -3,3 +3,8 @@
 /Debug/*
 !/Debug/*.s19
 /.idea
+/SDCC/*
+!/SDCC/*.s19
+!/SDCC/*.ihx
+!/SDCC/*.hex
+/.idea

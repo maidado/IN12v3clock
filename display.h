@@ -5,6 +5,7 @@
 extern "C" {
 #endif
 
+#include "STM8S003F3.h"
 
 #define DOT_PIN						sfr_PORTD.ODR.ODR6
 #define NIXIE_COUNT				4
@@ -25,6 +26,8 @@ void displayRset(uint8_t value);
 void displayGset(uint8_t value);
 void displayBset(uint8_t value);
 
+ISR_HANDLER (TIM2_UPD_ISR, _TIM2_OVR_UIF_VECTOR_);
+ISR_HANDLER (TIM2_CAP_ISR, _TIM2_CAPCOM_CC1IF_VECTOR_);
 
 #ifdef	__cplusplus
 }
