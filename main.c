@@ -12,6 +12,7 @@
  UP BUTTON   - change effects
  DOWN BUTTON - on/off RBG backlight
  
+ todo comments on english
  todo 12/24
  todo if there is enough ROM - gamma compensation for RGB.
 */
