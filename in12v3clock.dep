@@ -17,7 +17,7 @@ ExternDep= keyboard.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8
 ExternDep= keyboard.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mods0.h"  stm8_headers\include\STM8S003F3.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\stdint.h"  keyboard.h macro.h
 
 [Root.Source Files.keyevents.c.Config.0]
-ExternDep= keyevents.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mods0.h"  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\stdint.h"  keyevents.h macro.h keyboard.h display.h iface.h ds3231.h eeprom.h
+ExternDep= keyevents.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mods0.h"  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\stdint.h"  keyevents.h macro.h keyboard.h display.h stm8_headers\include\STM8S003F3.h  iface.h ds3231.h eeprom.h
 
 [Root.Source Files.keyevents.c.Config.1]
 ExternDep= keyevents.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mods0.h"  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\stdint.h"  keyevents.h macro.h keyboard.h display.h stm8_headers\include\STM8S003F3.h  iface.h ds3231.h eeprom.h
