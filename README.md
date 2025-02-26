@@ -150,8 +150,10 @@ Q7 -> 2003A U14 I5, O5-> N1 9
 2. Flash the firmware to the STM8S003F3P6 microcontroller.
 - The `in12v3clock_Programmer` directory contains a project for the STVP programmer with a default EEPROM file and a default OPTION BYTE file.
 
- ![SWD pinout:](Photo/swd_pinout.jpg)
- 
+ - SWD pinout:
+ ![SWD pinout](Photo/swd_pinout.jpg)
+
+
  Here you can find the pinout of your ST-Link programmer:  
  [Wiki: ST-Link Pinout](https://wiki.cuvoodoo.info/doku.php?id=jtag)
 
