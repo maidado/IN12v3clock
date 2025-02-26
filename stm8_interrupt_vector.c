@@ -1,6 +1,10 @@
+#include "STM8S003F3.h"
+#include "display.h"
 /*	BASIC INTERRUPT VECTOR TABLE FOR STM8 devices
  *	Copyright (c) 2007 STMicroelectronics
  */
+// Cosmic compiler
+#if defined(__CSMC__)
 
 typedef void @far (*interrupt_handler_t)(void);
 
@@ -23,8 +27,7 @@ extern void _stext();     /* startup routine */
  DECLARATION OF USER ISRs
 *******************/
 //@far @interrupt void TIM4_UPD_ISR(void);
-@far @interrupt void TIM2_UPD_ISR(void);
-@far @interrupt void TIM2_CAP_ISR(void);
+
 struct interrupt_vector const _vectab[] = {
 	{0x82, (interrupt_handler_t)_stext}, /* reset */
 	{0x82, NonHandledInterrupt}, /* trap  */
@@ -60,3 +63,4 @@ struct interrupt_vector const _vectab[] = {
 	{0x82, NonHandledInterrupt}, /* irq29 */
 };
 
+#endif

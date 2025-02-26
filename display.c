@@ -303,13 +303,13 @@ ISR_HANDLER (TIM2_UPD_ISR, _TIM2_OVR_UIF_VECTOR_)
 
 ISR_HANDLER (TIM2_CAP_ISR, _TIM2_CAPCOM_CC1IF_VECTOR_)
 {
-	//для цифр
+	//РґР»СЏ С†РёС„СЂ
 	if(sfr_TIM2.SR1.CC1IF){
 		hc595ChainShiftOut(zero_data,sizeof(zero_data));
 		sfr_TIM2.SR1.CC1IF = 0;
 	}
 	
-	//для точки
+	//РґР»СЏ С‚РѕС‡РєРё
 	if(sfr_TIM2.SR1.CC2IF)
 	{
 		DOT_PIN = 0;

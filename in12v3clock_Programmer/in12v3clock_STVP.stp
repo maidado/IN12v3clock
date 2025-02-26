@@ -25,7 +25,8 @@ Little Endian=0
 Count=1
 File0=D:\Work\HOME\Nixie_China\Prog\IN12v3clock\in12v3clock_Programmer\in12v3clock_STVP_OPTION BYTE.hex
 [DATA MEMORY]
-Count=0
+Count=1
+File0=D:\Work\HOME\Nixie_China\Prog\IN12v3clock\in12v3clock_Programmer\in12v3clock_STVP_data.hex
 [PROGRAM MEMORY]
 Count=1
 File0=D:\Work\HOME\Nixie_China\Prog\IN12v3clock\Release\in12v3clock.s19

@@ -73,6 +73,7 @@ Int.108=0
 String.6.0=2024,11,4,10,36,5
 String.100.0=$(TargetFName)
 String.101.0=
+String.102.0=
 String.103.0=.\;stm8s_stdperiph_driver\inc;stm8s_stdperiph_driver\src;stm8_headers\include;
 
 [Root.Config.0.Settings.2]
