@@ -138,14 +138,15 @@ Q7 -> 2003A U14 I5, O5-> N1 9
    git clone --recurse-submodules <repository_url>
    ```
 
-**When using COSMIC:**
-- Compile the firmware using Cosmic STM8 v4.6 toolchain. 
-- Or use precompiled firmware file: `Release\in12v3clock.s19`  
-**When using SDCC:**
-- Install Docker.
-- Open Windows Terminal.
-- Run the `run.cmd` file.
-- Or use the precompiled files (`main.s19` or `main.ihx`) located in the `SDCC` directory.
+ **When using COSMIC:**
+ - Compile the firmware using Cosmic STM8 v4.6 toolchain. 
+ - Or use precompiled firmware file: `Release\in12v3clock.s19` 
+
+ **When using SDCC:**
+ - Install Docker.
+ - Open Windows Terminal.
+ - Run the `run.cmd` file.
+ - Or use the precompiled files (`main.s19` or `main.ihx`) located in the `SDCC` directory.
 2. Flash the firmware to the STM8S003F3P6 microcontroller.
 - The `in12v3clock_Programmer` directory contains a project for the STVP programmer with a default EEPROM file and a default OPTION BYTE file.
 3. Verify the board's functionality.
