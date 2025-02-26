@@ -18,9 +18,10 @@ The STM8S003F3P6 microcontroller features 8 KB of Flash memory, 1 KB of RAM, and
 
 ## Requirements
 1. **Cosmic STM8 compiller + STVD**
-2. **External Libraries**:
-   - Added submodule: [STM8_headers](https://github.com/gicking/STM8_headers).
-
+2. Alternate is the **SDCC compiller** (the binary file is slightly larger compared to COSMIC).
+3. **External Libraries**:
+- Added submodule: [STM8_headers](https://github.com/gicking/STM8_headers).
+  
 ---
 
 ## Important Configuration
@@ -136,9 +137,18 @@ Q7 -> 2003A U14 I5, O5-> N1 9
    ```bash
    git clone --recurse-submodules <repository_url>
    ```
-2. Compile the firmware using Cosmic STM8 v4.6 toolchain. Or use compilled firmware file Release\in12v3clock.s19
-3. Flash the firmware to the STM8S003F3P6 microcontroller.
-4. Verify the board's functionality.
+
+**When using COSMIC:**
+- Compile the firmware using Cosmic STM8 v4.6 toolchain. 
+- Or use precompiled firmware file: `Release\in12v3clock.s19`  
+**When using SDCC:**
+- Install Docker.
+- Open Windows Terminal.
+- Run the `run.cmd` file.
+- Or use the precompiled files (`main.s19` or `main.ihx`) located in the `SDCC` directory.
+2. Flash the firmware to the STM8S003F3P6 microcontroller.
+- The `in12v3clock_Programmer` directory contains a project for the STVP programmer with a default EEPROM file and a default OPTION BYTE file.
+3. Verify the board's functionality.
 
 ---
 
